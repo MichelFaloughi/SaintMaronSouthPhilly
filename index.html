@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saint Maron Maronite Catholic Church — South Philadelphia</title>
+  <meta name="description" content="Saint Maron Maronite Catholic Church in South Philadelphia. Divine Liturgy schedule, parish news, weekly bulletin, and ways to support our parish.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Est. 1892 &middot; Eparchy of Saint Maron of Brooklyn</span>
+        <h1>Saint Maron<br>Maronite Catholic Church</h1>
+        <p class="lede">An ancient faith with deep Lebanese roots, at home in South Philadelphia for more than a century. All are welcome at the table of the Lord.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="bulletin.html">This Week's Bulletin</a>
+          <a class="btn ghost-light" href="contact.html">Plan Your Visit</a>
+        </div>
+      </div>
+      <aside class="mass-card reveal">
+        <h3>Divine Liturgy</h3>
+        <p class="sub">Celebrated in English, Arabic, and Syriac</p>
+        <dl>
+          <dt>Saturday Vigil</dt><dd>5:00 PM</dd>
+          <dt>Sunday</dt><dd>10:30 AM</dd>
+          <dt>Weekdays</dt><dd>9:00 AM</dd>
+          <dt>Confessions</dt><dd>Before Liturgy</dd>
+        </dl>
+        <p class="note">Times shown are placeholders — the parish will confirm the final schedule.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap parish-intro">
+      <figure class="parish-photo reveal">
+        <img src="images/church.jpeg" alt="The sanctuary of Saint Maron Church: the altar beneath its stone arch, with a crucifix above and kneeling angels at either side.">
+        <figcaption>Our sanctuary in South Philadelphia.</figcaption>
+      </figure>
+      <div class="reveal">
+        <span class="eyebrow">Our Parish</span>
+        <h2>A Maronite home in the heart of the city</h2>
+        <hr class="rule">
+        <p>Founded by Lebanese immigrants at the close of the nineteenth century, Saint Maron has been a spiritual home for generations of families in South Philadelphia. We worship in the ancient Maronite tradition — one of the Eastern Catholic Churches in full communion with Rome — with a liturgy whose roots reach back to the earliest Christian communities of Antioch.</p>
+        <p style="margin-top:12px;">Whether your family has been here for a hundred years or you are stepping inside for the first time, you belong here. <em>(Placeholder history text — to be replaced with the parish's own story.)</em></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Happening at Saint Maron</span>
+        <h2>Parish News</h2>
+        <hr class="rule center">
+      </div>
+      <div id="home-news" class="news-grid"></div>
+      <p style="text-align:center; margin-top:34px;"><a class="btn" href="news.html">All Parish News</a></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="callout reveal">
+        <div>
+          <h2>Support the mission of our parish</h2>
+          <p>Your generosity sustains our liturgies, our building, and our outreach to the community.</p>
+        </div>
+        <a class="btn primary" href="donate.html">Ways to Give</a>
+      </div>
+    </div>
+  </section>
+
+  <footer id="site-footer" class="site-footer"></footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    STM.renderChrome("index.html");
+    STM.renderNews("home-news", 3);
+  </script>
+</body>
+</html>

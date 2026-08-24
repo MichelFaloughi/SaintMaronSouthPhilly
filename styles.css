@@ -1,0 +1,465 @@
+/* ============================================================
+   Saint Maron Maronite Catholic Church — South Philadelphia
+   Design tokens: limestone, burgundy, brass gold, ink, alert red
+   Display face: Marcellus · Body face: Source Serif 4
+   Signature motif: Romanesque arch frames + cedar of Lebanon
+   ============================================================ */
+
+:root {
+  --stone: #f4f3ee;
+  --stone-2: #eceadf;
+  --card: #fbfaf6;
+  --burgundy: #6b2233;
+  --burgundy-deep: #46151f;
+  --gold: #b08a2e;
+  --gold-soft: #d3b563;
+  --ink: #23271f;
+  --muted: #6b6f63;
+  --wine: #a13d3d;
+  --line: #d9d5c7;
+  --radius: 10px;
+  --wrap: 1080px;
+  --display: "Marcellus", "Times New Roman", serif;
+  --body: "Source Serif 4", Georgia, serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--stone);
+}
+
+img { max-width: 100%; display: block; }
+a { color: var(--burgundy); }
+
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 22px; }
+
+/* ---------- Typography ---------- */
+h1, h2, h3, .display { font-family: var(--display); font-weight: 400; line-height: 1.15; color: var(--burgundy); }
+h1 { font-size: clamp(2rem, 4.5vw, 3.1rem); letter-spacing: 0.01em; }
+h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); }
+h3 { font-size: 1.25rem; }
+
+.eyebrow {
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.78rem;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.7rem;
+}
+
+.lede { font-size: 1.12rem; color: var(--muted); max-width: 62ch; }
+
+/* Double gold hairline divider */
+.rule {
+  border: 0;
+  height: 5px;
+  margin: 0.4rem 0 1.6rem;
+  border-top: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
+  width: 88px;
+}
+.rule.center { margin-left: auto; margin-right: auto; }
+
+/* ---------- Header / nav ---------- */
+.site-header {
+  background: var(--stone);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.masthead {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0 10px;
+}
+.crest { width: 46px; height: 46px; flex: none; }
+.masthead-names { line-height: 1.2; }
+.masthead-names .name {
+  font-family: var(--display);
+  font-size: 1.22rem;
+  color: var(--burgundy);
+  text-decoration: none;
+  display: block;
+}
+.masthead-names .place {
+  font-family: var(--display);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-size: 0.66rem;
+  color: var(--gold);
+}
+.nav {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  padding-bottom: 10px;
+}
+.nav a {
+  font-family: var(--display);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.82rem;
+  color: var(--ink);
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+.nav a:hover { border-color: var(--line); background: var(--card); }
+.nav a.active {
+  color: var(--burgundy);
+  border-color: var(--gold);
+  background: var(--card);
+}
+.nav a:focus-visible, a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ---------- Hero (home) ---------- */
+.hero {
+  background: linear-gradient(180deg, var(--burgundy) 0%, var(--burgundy-deep) 100%);
+  color: var(--stone);
+  padding: 64px 0 72px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  /* faint oversized arch echo in the background */
+  content: "";
+  position: absolute;
+  right: -140px;
+  top: 40px;
+  width: 520px;
+  height: 720px;
+  border: 1px solid rgba(211, 181, 99, 0.25);
+  border-radius: 260px 260px 0 0;
+  pointer-events: none;
+}
+.hero .eyebrow { color: var(--gold-soft); }
+.hero h1 { color: var(--stone); }
+.hero .lede { color: #e6d3d6; }
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+}
+.hero-actions { margin-top: 1.6rem; display: flex; gap: 12px; flex-wrap: wrap; }
+
+.btn {
+  display: inline-block;
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.82rem;
+  padding: 12px 22px;
+  border-radius: 999px;
+  text-decoration: none;
+  border: 1px solid var(--gold);
+  color: var(--burgundy);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.btn.primary { background: var(--gold); color: var(--burgundy-deep); border-color: var(--gold); }
+.btn.primary:hover { background: var(--gold-soft); }
+.btn.ghost-light { color: var(--stone); border-color: var(--gold-soft); }
+.btn.ghost-light:hover { background: rgba(211, 181, 99, 0.15); }
+.btn:hover { background: rgba(176, 138, 46, 0.12); }
+.btn.danger { border-color: var(--wine); color: var(--wine); }
+.btn.danger:hover { background: rgba(110, 43, 43, 0.08); }
+.btn.small { padding: 7px 14px; font-size: 0.72rem; }
+
+/* Mass times card in hero */
+.mass-card {
+  background: var(--card);
+  color: var(--ink);
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--gold);
+  padding: 26px 28px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+}
+.mass-card h3 { margin-bottom: 4px; }
+.mass-card .sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 14px; }
+.mass-card dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; }
+.mass-card dt { font-family: var(--display); color: var(--burgundy); }
+.mass-card dd { text-align: right; }
+.mass-card .note { margin-top: 14px; font-size: 0.85rem; color: var(--muted); font-style: italic; }
+
+/* ---------- Sections ---------- */
+.section { padding: 64px 0; }
+.section.alt { background: var(--stone-2); }
+.section-head { margin-bottom: 2rem; }
+.section-head.center { text-align: center; }
+
+.cols-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: center; }
+.cols-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+/* ---------- Arch photo frames (signature) ---------- */
+.arch {
+  border-radius: 200px 200px var(--radius) var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--burgundy);
+  aspect-ratio: 3 / 4;
+  position: relative;
+}
+.arch.landscape { aspect-ratio: 4 / 3; border-radius: 160px 160px var(--radius) var(--radius); }
+.arch svg, .arch img { width: 100%; height: 100%; object-fit: cover; }
+.photo-note {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-style: italic;
+  text-align: center;
+  margin-top: 8px;
+}
+.arch-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: end; }
+.arch-row .arch:nth-child(2) { transform: translateY(-18px); }
+
+/* ---------- Parish intro: photo beside text ---------- */
+.parish-intro { display: flex; gap: 40px; align-items: flex-start; }
+.parish-photo { width: 340px; flex-shrink: 0; margin: 0; }
+.parish-photo img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+}
+.parish-photo figcaption {
+  margin-top: 10px;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ---------- Cards (news, bulletins) ---------- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.card .card-img { aspect-ratio: 16 / 8; background: var(--burgundy); }
+.card .card-img img, .card .card-img svg { width: 100%; height: 100%; object-fit: cover; }
+.card .card-body { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.card .date {
+  font-family: var(--display);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+  color: var(--gold);
+}
+.card p { color: var(--ink); }
+.card .card-actions { margin-top: auto; padding-top: 10px; display: flex; gap: 10px; flex-wrap: wrap; }
+
+.news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 26px; }
+
+/* Bulletin list */
+.bulletin-list { display: flex; flex-direction: column; gap: 14px; max-width: 760px; }
+.bulletin-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+}
+.bulletin-item .b-icon { flex: none; width: 40px; height: 40px; }
+.bulletin-item .b-meta { flex: 1; }
+.bulletin-item .b-meta .date { font-family: var(--display); text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.7rem; color: var(--gold); }
+.bulletin-item h3 { font-size: 1.1rem; }
+
+/* ---------- Info rows (contact) ---------- */
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.info-block { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 30px; }
+.info-block h3 { margin-bottom: 10px; }
+.info-block p + p { margin-top: 8px; }
+.info-block .label { font-family: var(--display); text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.7rem; color: var(--gold); display: block; margin-bottom: 2px; }
+
+/* ---------- Donate ---------- */
+.give-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto; }
+.give-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 30px 28px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+.give-card p { color: var(--muted); font-size: 0.95rem; flex: 1; }
+
+/* ---------- Callout ---------- */
+.callout {
+  background: var(--burgundy);
+  color: var(--stone);
+  border-radius: var(--radius);
+  padding: 44px 46px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.callout h2 { color: var(--stone); }
+.callout p { color: #e6d3d6; }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--burgundy-deep);
+  color: #e6d3d6;
+  padding: 48px 0 30px;
+  margin-top: 40px;
+}
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
+.site-footer h3 { color: var(--stone); font-size: 1.05rem; margin-bottom: 10px; }
+.site-footer a { color: var(--gold-soft); text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+.site-footer .blessing { font-family: var(--display); color: var(--gold-soft); font-size: 1.05rem; margin-top: 6px; }
+.footer-base {
+  border-top: 1px solid rgba(211, 181, 99, 0.25);
+  margin-top: 34px;
+  padding-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  color: #b9979d;
+}
+
+/* ---------- Admin ---------- */
+.admin-shell { max-width: 860px; margin: 0 auto; }
+.admin-banner {
+  background: var(--wine);
+  color: #f6e9e9;
+  border-radius: var(--radius);
+  padding: 12px 18px;
+  font-size: 0.9rem;
+  margin-bottom: 26px;
+}
+.panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 30px 32px;
+  margin-bottom: 28px;
+}
+.panel h2 { margin-bottom: 4px; }
+.panel .hint { color: var(--muted); font-size: 0.92rem; margin-bottom: 18px; }
+.field { margin-bottom: 16px; }
+.field label { display: block; font-family: var(--display); font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--burgundy); margin-bottom: 6px; }
+.field input[type="text"], .field input[type="url"], .field input[type="date"], .field input[type="password"], .field textarea {
+  width: 100%;
+  font-family: var(--body);
+  font-size: 1rem;
+  padding: 11px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+}
+.field textarea { min-height: 120px; resize: vertical; }
+.field input:focus, .field textarea:focus { outline: 2px solid var(--gold); border-color: var(--gold); }
+.field .help { font-size: 0.82rem; color: var(--muted); margin-top: 5px; }
+.field input[type="file"] { font-size: 0.95rem; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.admin-list { display: flex; flex-direction: column; gap: 10px; margin-top: 18px; }
+.admin-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px 16px;
+  background: #fff;
+}
+.admin-item .t { font-family: var(--display); color: var(--burgundy); }
+.admin-item .d { font-size: 0.82rem; color: var(--muted); }
+
+.toast {
+  position: fixed;
+  bottom: 26px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--burgundy);
+  color: var(--stone);
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--gold);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 100;
+  font-size: 0.95rem;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+.empty-state {
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  padding: 40px;
+  text-align: center;
+  color: var(--muted);
+  background: var(--card);
+}
+
+/* ---------- Reveal on scroll (static page sections only) ---------- */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.in { opacity: 1; transform: none; }
+
+/* Self-running fade for injected content (news cards, bulletin rows).
+   Runs on its own — cannot get stuck hidden. */
+.fade-in { animation: fadeUp 0.55s ease both; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .fade-in { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 880px) {
+  .hero-grid, .cols-2, .info-grid { grid-template-columns: 1fr; }
+  .arch-row { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .parish-intro { flex-direction: column; gap: 28px; }
+  .parish-photo { width: 100%; max-width: 340px; margin: 0 auto; }
+  .footer-grid { grid-template-columns: 1fr; gap: 26px; }
+  .field-row { grid-template-columns: 1fr; }
+  .hero { padding: 48px 0 56px; }
+  .callout { padding: 32px 28px; }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .arch-row { grid-template-columns: 1fr 1fr; }
+  .arch-row .arch:nth-child(3) { display: none; }
+  .bulletin-item { flex-wrap: wrap; }
+}
