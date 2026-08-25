@@ -29,8 +29,6 @@ push; the change deploys automatically.
 
 ## Before launch
 
-The parish details are still placeholders and are marked as such on the
-pages: Divine Liturgy times, phone, email, office hours, and the pastor's
-name. The footer carries a "demonstration site" line for the same reason.
-Replace those, point the Zeffy and Venmo buttons at the parish's own
-accounts, and swap the contact page's map placeholder for a real embed.
+Parish details are still placeholders and are marked as such on the pages.
+See [OUTSTANDING.md](OUTSTANDING.md) for the full checklist of what needs
+replacing and what the parish still needs to supply.
