@@ -348,6 +348,7 @@ h3 { font-size: 1.25rem; }
 }
 
 .empty-state {
+  grid-column: 1 / -1; /* span the news grid rather than sitting in one cell */
   border: 1px dashed var(--line);
   border-radius: var(--radius);
   padding: 40px;

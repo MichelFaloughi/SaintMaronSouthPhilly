@@ -68,47 +68,9 @@ window.STM_ART = (function () {
 })();
 
 window.STM_SEED = {
-  news: [
-    {
-      id: "seed-news-1",
-      title: "Feast of the Assumption Celebration",
-      date: "2026-08-15",
-      body:
-        "Join us as we celebrate the Feast of the Assumption of the Blessed Virgin Mary with a special Divine Liturgy, followed by a parish luncheon in the church hall. All parishioners, family, and friends are warmly invited. (Placeholder text for the demo.)",
-      art: "candles",
-      link: { label: "See the schedule", url: "https://docs.google.com/forms/d/e/1FAIpQLSdI5rzP049X-_zhFLWHk6T2N3DOWlkigE1EKIMDNrIxZsWcyA/viewform" },
-    },
-    {
-      id: "seed-news-2",
-      title: "Lebanese Heritage Festival Returns This Fall",
-      date: "2026-08-02",
-      body:
-        "Our beloved Lebanese Heritage Festival returns with traditional food, music, dabke dancing, and activities for children. Volunteers are needed for cooking, setup, and hospitality — see the parish office to sign up. (Placeholder text for the demo.)",
-      art: "cedar",
-      link: { label: "Volunteer to help", url: "https://docs.google.com/forms/d/e/1FAIpQLSdI5rzP049X-_zhFLWHk6T2N3DOWlkigE1EKIMDNrIxZsWcyA/viewform" },
-    },
-    {
-      id: "seed-news-3",
-      title: "Religious Education Registration Now Open",
-      date: "2026-07-20",
-      body:
-        "Registration for the fall religious education program is now open for children in grades K through 8. Classes meet Sunday mornings before the Divine Liturgy. Please register by the end of the month. (Placeholder text for the demo.)",
-      art: "window",
-      link: null,
-    },
-  ],
-  bulletins: [
-    {
-      id: "seed-bull-1",
-      title: "Thirteenth Sunday of Pentecost",
-      date: "2026-08-16",
-      file: "bulletins/bulletin-2026-08-16.pdf",
-    },
-    {
-      id: "seed-bull-2",
-      title: "Twelfth Sunday of Pentecost",
-      date: "2026-08-09",
-      file: "bulletins/bulletin-2026-08-09.pdf",
-    },
-  ],
+  // Real parish content only. Both lists start empty so the site never shows
+  // invented announcements; the pages fall back to a "check back soon" notice.
+  // See README.md for the shape of a news item and a bulletin entry.
+  news: [],
+  bulletins: [],
 };
