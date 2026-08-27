@@ -53,12 +53,12 @@ Confirmed so far: Saturday Vigil 4:00 PM, Sunday 11:00 AM.
 - [ ] **Replace the demo Google Form links** — news items can carry a button;
       the demo pointed at a test form. Nothing links to it now that the sample
       news is gone, but it will come up again with the first real sign-up.
-- [ ] **Give the priest a real CMS login.** Sveltia CMS is wired up at
-      `/admin`, but sign-in is currently by GitHub personal access token,
-      which means a developer's token and a 90-day expiry. To get a
-      "Sign in with GitHub" button instead: create a GitHub OAuth app, deploy
-      `sveltia/sveltia-cms-auth` (restricting its allowed origins), and add
-      `base_url` to `admin/config.yml`.
+- [ ] **Finish "Sign In with GitHub".** The handler (`api/oauth.js`) and
+      config are in place. Still needed: create the GitHub OAuth app with
+      callback `https://www.saintmaronphilly.org/api/oauth`, set
+      `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` in Vercel, redeploy.
+      See README. The OAuth app should eventually be owned by the parish
+      account, not a personal one.
 - [ ] **Create the parish GitHub organisation** so the church owns the repo
       independently. Two owners, a parish role address, passkeys for 2FA,
       recovery codes in a shared password manager.

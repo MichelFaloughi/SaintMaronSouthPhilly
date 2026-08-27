@@ -43,13 +43,21 @@ the CMS is a convenience, not a requirement.
 
 ### Signing in to the CMS
 
-Until the parish has its own GitHub organisation, use the **Sign In with Token**
-button and paste a GitHub personal access token; the dialog links to the token
-page with the right scopes pre-selected. Tokens expire (90 days by default).
+**Sign In with GitHub** signs in with your GitHub account, which must have
+write access to this repo. It goes through `api/oauth.js`, a Vercel serverless
+function on the same domain that holds the OAuth app's client secret (a static
+site cannot keep one). It needs two environment variables set in Vercel:
 
-Replacing this with a normal "Sign in with GitHub" button means deploying an
-OAuth handler and adding a `base_url` to `admin/config.yml`. See
-[OUTSTANDING.md](OUTSTANDING.md).
+| Variable | From |
+| --- | --- |
+| `GITHUB_CLIENT_ID` | GitHub → Settings → Developer settings → OAuth Apps |
+| `GITHUB_CLIENT_SECRET` | same page, *Generate a new client secret* |
+
+The OAuth app's **Authorization callback URL** must be
+`https://www.saintmaronphilly.org/api/oauth`.
+
+**Sign In Using Access Token** is the fallback: paste a fine-grained personal
+access token with *Contents: read and write* on this repo. Needs no setup.
 
 ## Running locally
 

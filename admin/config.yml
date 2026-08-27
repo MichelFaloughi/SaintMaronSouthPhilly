@@ -11,9 +11,11 @@ backend:
   name: github
   repo: MichelFaloughi/SaintMaronSouthPhilly
   branch: main
-  # Until the parish has its own GitHub org, sign in with the "Sign In with
-  # Token" button on the login screen. Adding a base_url here later switches
-  # this over to a normal "Sign in with GitHub" button.
+  # "Sign In with GitHub" goes through api/oauth.js, a Vercel function on the
+  # same domain that holds the OAuth app's client secret. "Sign In Using
+  # Access Token" still works as a fallback.
+  base_url: https://www.saintmaronphilly.org
+  auth_endpoint: api/oauth
 
 # Photos uploaded for news items. Bulletin PDFs override this per field.
 media_folder: images
