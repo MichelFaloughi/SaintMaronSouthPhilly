@@ -1,0 +1,125 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+#
+# Sveltia CMS configuration for the Saint Maron parish site.
+#
+# Content is stored as two JSON files that the site fetches at runtime. They are
+# single files holding a list, rather than one file per entry, because the site
+# has no build step: a browser cannot list a directory, so it must be able to
+# fetch the whole collection in one request.
+
+backend:
+  name: github
+  repo: MichelFaloughi/SaintMaronSouthPhilly
+  branch: main
+  # Until the parish has its own GitHub org, sign in with the "Sign In with
+  # Token" button on the login screen. Adding a base_url here later switches
+  # this over to a normal "Sign in with GitHub" button.
+
+# Photos uploaded for news items. Bulletin PDFs override this per field.
+media_folder: images
+public_folder: /images
+
+collections:
+  - name: news
+    label: Parish News
+    icon: newspaper
+    files:
+      - name: items
+        label: News Items
+        file: content/news.json
+        description: Announcements, feasts, and events shown on the home page and the News page.
+        fields:
+          - label: News Items
+            name: items
+            widget: list
+            label_singular: News Item
+            summary: '{{fields.date}} — {{fields.title}}'
+            collapsed: true
+            fields:
+              - label: Title
+                name: title
+                widget: string
+
+              - label: Date
+                name: date
+                widget: datetime
+                format: 'YYYY-MM-DD'
+                date_format: 'YYYY-MM-DD'
+                time_format: false
+                picker_utc: true
+                hint: The newest date appears first on the site.
+
+              - label: Text
+                name: body
+                widget: text
+                hint: A short paragraph. Plain text — no formatting.
+
+              - label: Photo
+                name: image
+                widget: image
+                required: false
+                hint: Optional. If left empty, a decorative illustration is used instead.
+
+              - label: Photo description
+                name: imageAlt
+                widget: string
+                required: false
+                hint: Describes the photo for people using a screen reader. Only needed if you added a photo.
+
+              - label: Illustration
+                name: art
+                widget: select
+                required: false
+                default: window
+                options:
+                  - { label: Church window, value: window }
+                  - { label: Cedar tree, value: cedar }
+                  - { label: Candles, value: candles }
+                  - { label: Bells, value: bells }
+                hint: Used only when there is no photo.
+
+              - label: Button
+                name: link
+                widget: object
+                required: false
+                collapsed: true
+                hint: Optional. Adds a button to the card, e.g. a sign-up form.
+                fields:
+                  - { label: Button text, name: label, widget: string, required: false, default: Learn more }
+                  - { label: Link address, name: url, widget: string, required: false, hint: 'Paste the full address, starting with https://' }
+
+  - name: bulletins
+    label: Weekly Bulletin
+    icon: description
+    files:
+      - name: items
+        label: Bulletins
+        file: content/bulletins.json
+        description: The PDF bulletins listed on the Bulletin page.
+        fields:
+          - label: Bulletins
+            name: items
+            widget: list
+            label_singular: Bulletin
+            summary: '{{fields.date}} — {{fields.title}}'
+            collapsed: true
+            fields:
+              - label: Title
+                name: title
+                widget: string
+                hint: For example "Sunday, 6 September 2026".
+
+              - label: Date
+                name: date
+                widget: datetime
+                format: 'YYYY-MM-DD'
+                date_format: 'YYYY-MM-DD'
+                time_format: false
+                picker_utc: true
+
+              - label: PDF
+                name: file
+                widget: file
+                media_folder: /bulletins
+                public_folder: /bulletins
+                hint: Upload the bulletin PDF.

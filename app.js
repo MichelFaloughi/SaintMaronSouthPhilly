@@ -1,24 +1,49 @@
 /* ============================================================
    Shared site logic.
    - Injects the header and footer on every page
-   - Renders news cards and bulletin lists from data.js
+   - Renders news cards and bulletin lists from content/*.json
    ============================================================ */
 
 (function () {
   "use strict";
 
   // ---------- Content ----------
-  // News and bulletins come from data.js. To publish, edit that file and
-  // deploy; there is no browser-side content store.
+  // News and bulletins live in content/*.json, written by the CMS at /admin.
+  // Each file holds { "items": [...] }. One file per collection rather than one
+  // file per entry, because with no build step a browser cannot list a folder.
+  var SOURCES = {
+    news: "content/news.json",
+    bulletins: "content/bulletins.json",
+  };
+  var pending = {};
+
   function byDateDesc(a, b) { return (b.date || "").localeCompare(a.date || ""); }
 
-  function getNews() {
-    return window.STM_SEED.news.slice().sort(byDateDesc);
+  function load(kind) {
+    if (!pending[kind]) {
+      pending[kind] = fetch(SOURCES[kind], { cache: "no-cache" })
+        .then(function (res) {
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          return res.json();
+        })
+        .then(function (data) {
+          var items = data && Array.isArray(data.items) ? data.items : [];
+          return items.slice().sort(byDateDesc);
+        })
+        .catch(function (err) {
+          // Unreachable content is not fatal: the page shows its "check back
+          // soon" notice instead of breaking. Also the case on file:// URLs,
+          // where fetch is blocked -- serve the folder over http to see content.
+          console.warn("Could not load " + kind + ": " + err.message);
+          return [];
+        });
+    }
+    return pending[kind];
   }
 
-  function getBulletins() {
-    return window.STM_SEED.bulletins.slice().sort(byDateDesc);
-  }
+  // Both return a promise for the sorted list, newest first.
+  function getNews() { return load("news"); }
+  function getBulletins() { return load("bulletins"); }
 
   // ---------- Helpers ----------
   function esc(s) {
@@ -147,33 +172,35 @@
 
   function renderNews(id, limit) {
     var el = document.getElementById(id);
-    if (!el) return;
-    var items = getNews();
-    if (limit) items = items.slice(0, limit);
-    if (!items.length) {
-      el.innerHTML = '<div class="empty-state">No news has been posted yet. Check back soon.</div>';
-      return;
-    }
-    el.innerHTML = items.map(newsCard).join("");
+    if (!el) return Promise.resolve();
+    return getNews().then(function (items) {
+      if (limit) items = items.slice(0, limit);
+      if (!items.length) {
+        el.innerHTML = '<div class="empty-state">No news has been posted yet. Check back soon.</div>';
+        return;
+      }
+      el.innerHTML = items.map(newsCard).join("");
+    });
   }
 
   function renderBulletins(id) {
     var el = document.getElementById(id);
-    if (!el) return;
-    var items = getBulletins();
-    if (!items.length) {
-      el.innerHTML = '<div class="empty-state">No bulletins are available right now. Check back soon.</div>';
-      return;
-    }
-    el.innerHTML = items.map(function (b) {
-      return (
-        '<div class="bulletin-item fade-in">' + PDF_ICON +
-        '<div class="b-meta"><span class="date">' + esc(prettyDate(b.date)) + "</span>" +
-        "<h3>" + esc(b.title) + "</h3></div>" +
-        '<a class="btn small" href="' + esc(b.file) + '" target="_blank" rel="noopener">Open PDF</a>' +
-        "</div>"
-      );
-    }).join("");
+    if (!el) return Promise.resolve();
+    return getBulletins().then(function (items) {
+      if (!items.length) {
+        el.innerHTML = '<div class="empty-state">No bulletins are available right now. Check back soon.</div>';
+        return;
+      }
+      el.innerHTML = items.map(function (b) {
+        return (
+          '<div class="bulletin-item fade-in">' + PDF_ICON +
+          '<div class="b-meta"><span class="date">' + esc(prettyDate(b.date)) + "</span>" +
+          "<h3>" + esc(b.title) + "</h3></div>" +
+          '<a class="btn small" href="' + esc(b.file) + '" target="_blank" rel="noopener">Open PDF</a>' +
+          "</div>"
+        );
+      }).join("");
+    });
   }
 
   // ---------- Public API ----------

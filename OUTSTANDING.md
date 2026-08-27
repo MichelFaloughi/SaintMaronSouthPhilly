@@ -53,10 +53,20 @@ Confirmed so far: Saturday Vigil 4:00 PM, Sunday 11:00 AM.
 - [ ] **Replace the demo Google Form links** — news items can carry a button;
       the demo pointed at a test form. Nothing links to it now that the sample
       news is gone, but it will come up again with the first real sign-up.
-- [ ] **Decide how staff will publish.** Content currently lives in `data.js`
-      and publishes by git push. If the parish office needs to post without
-      touching code, wire in a hosted CMS (Sanity, Contentful, Decap). See
-      `README.md`.
+- [ ] **Give the priest a real CMS login.** Sveltia CMS is wired up at
+      `/admin`, but sign-in is currently by GitHub personal access token,
+      which means a developer's token and a 90-day expiry. To get a
+      "Sign in with GitHub" button instead: create a GitHub OAuth app, deploy
+      `sveltia/sveltia-cms-auth` (restricting its allowed origins), and add
+      `base_url` to `admin/config.yml`.
+- [ ] **Create the parish GitHub organisation** so the church owns the repo
+      independently. Two owners, a parish role address, passkeys for 2FA,
+      recovery codes in a shared password manager.
+- [ ] **Restrict what the CMS account can write.** A GitHub push ruleset
+      limiting the priest's account to `content/` and `bulletins/` means a
+      compromised session cannot touch `donate.html` or any code.
+- [ ] **Delete the `cedar` demo passcode** from `admin.html` and `README.txt`
+      on the `development` branch, so it is never mistaken for a real login.
 - [ ] **Custom domain** on Vercel, with HTTPS.
 - [ ] **Port the confirmed Mass times to `development`** — that branch still
       shows the old 5:00 PM / 10:30 AM placeholders.

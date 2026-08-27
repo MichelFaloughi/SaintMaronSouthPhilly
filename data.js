@@ -1,6 +1,7 @@
 /* ============================================================
-   Seed content for the demo. In production this file is replaced
-   by the CMS content store. Placeholder text is marked clearly.
+   Decorative SVG illustrations used on news cards that have no
+   photo. News and bulletin content itself lives in content/*.json
+   and is edited through the CMS at /admin.
    ============================================================ */
 
 window.STM_ART = (function () {
@@ -66,11 +67,3 @@ window.STM_ART = (function () {
     bells: frame(bells, "Photo placeholder — parish events"),
   };
 })();
-
-window.STM_SEED = {
-  // Real parish content only. Both lists start empty so the site never shows
-  // invented announcements; the pages fall back to a "check back soon" notice.
-  // See README.md for the shape of a news item and a bulletin entry.
-  news: [],
-  bulletins: [],
-};
