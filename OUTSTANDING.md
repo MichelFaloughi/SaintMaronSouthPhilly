@@ -62,7 +62,7 @@ Confirmed so far: Saturday Vigil 4:00 PM, Sunday 11:00 AM.
 - [ ] **Create the parish GitHub organisation** so the church owns the repo
       independently. Two owners, a parish role address, passkeys for 2FA,
       recovery codes in a shared password manager.
-- [ ] **Restrict what the CMS account can write.** A GitHub push ruleset
+- [ ] **Restrict what the CMS account can write** ([#1](https://github.com/MichelFaloughi/SaintMaronSouthPhilly/issues/1)). A GitHub push ruleset
       limiting the priest's account to `content/` and `bulletins/` means a
       compromised session cannot touch `donate.html` or any code.
 - [ ] **Delete the `cedar` demo passcode** from `admin.html` and `README.txt`
