@@ -3,6 +3,17 @@
 Static parish website. No build step, no server, no dependencies beyond
 Google Fonts. Open `index.html` in a browser, or deploy the folder as-is.
 
+## Where it lives
+
+| | |
+| --- | --- |
+| Live site | <https://www.saintmaronphilly.org/> |
+| Content editor | <https://www.saintmaronphilly.org/admin/> |
+| Hosting | Vercel, deploying `main` on every push |
+| Repo | <https://github.com/MichelFaloughi/SaintMaronSouthPhilly> |
+
+`saintmaronphilly.org` redirects to `www`.
+
 ## Branches
 
 | Branch | Contents | Serves |

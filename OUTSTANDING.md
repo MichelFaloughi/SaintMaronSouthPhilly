@@ -67,7 +67,7 @@ Confirmed so far: Saturday Vigil 4:00 PM, Sunday 11:00 AM.
       compromised session cannot touch `donate.html` or any code.
 - [ ] **Delete the `cedar` demo passcode** from `admin.html` and `README.txt`
       on the `development` branch, so it is never mistaken for a real login.
-- [ ] **Custom domain** on Vercel, with HTTPS.
+- [x] **Custom domain** on Vercel, with HTTPS — <https://www.saintmaronphilly.org/>.
 - [ ] **Port the confirmed Mass times to `development`** — that branch still
       shows the old 5:00 PM / 10:30 AM placeholders.
 
