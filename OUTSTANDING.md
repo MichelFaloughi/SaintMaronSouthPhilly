@@ -24,8 +24,7 @@ site or removed pending an answer.
 - [ ] **Parish history** — the "A Maronite home in the heart of the city"
       section is written from general Maronite history, not this parish's own
       story. The second paragraph is explicitly marked placeholder.
-- [ ] **Zeffy account link** — `donate.html` points at `zeffy.com`, the platform
-      homepage, not the parish's own giving page.
+- [x] **Zeffy account link** — points at the parish's donation form.
 - [ ] **Venmo account link** — same, points at `venmo.com`.
 - [ ] **First real news items and bulletin PDF** — both sections are empty and
       show a "check back soon" notice.
