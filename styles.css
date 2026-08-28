@@ -82,7 +82,13 @@ h3 { font-size: 1.25rem; }
   gap: 14px;
   padding: 14px 0 10px;
 }
-.crest { width: 46px; height: 46px; flex: none; }
+.crest {
+  width: 58px;
+  height: 58px;
+  flex: none;
+  border-radius: 50%;       /* the artwork is a round badge on a white square */
+  object-fit: cover;
+}
 .masthead-names { line-height: 1.2; }
 .masthead-names .name {
   font-family: var(--display);

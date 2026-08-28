@@ -66,16 +66,6 @@
     return "https://" + s;
   }
 
-  var CREST =
-    '<svg class="crest" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
-    '<path d="M8 60 L8 26 A24 24 0 0 1 56 26 L56 60 Z" fill="#6b2233" stroke="#b08a2e" stroke-width="2"/>' +
-    '<g stroke="#d3b563" stroke-width="2.4" stroke-linecap="round">' +
-    '<line x1="32" y1="18" x2="32" y2="52"/>' +
-    '<path d="M32 24 L21 29 M32 24 L43 29" fill="none"/>' +
-    '<path d="M32 33 L18 39 M32 33 L46 39" fill="none"/>' +
-    '<path d="M32 42 L20 48 M32 42 L44 48" fill="none"/>' +
-    '</g></svg>';
-
   var PDF_ICON =
     '<svg class="b-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
     '<rect x="6" y="3" width="24" height="34" rx="3" fill="#6b2233"/>' +
@@ -101,7 +91,7 @@
       }).join("");
       header.innerHTML =
         '<div class="wrap">' +
-        '<div class="masthead">' + CREST +
+        '<div class="masthead"><img class="crest" src="images/logo.png" alt="">' +
         '<div class="masthead-names">' +
         '<a class="name" href="index.html">Saint Maron Church</a>' +
         '<span class="place">Maronite Catholic &middot; South Philadelphia</span>' +
