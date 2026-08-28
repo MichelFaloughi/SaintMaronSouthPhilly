@@ -226,6 +226,22 @@ h3 { font-size: 1.25rem; }
 .arch-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: end; }
 .arch-row .arch:nth-child(2) { transform: translateY(-18px); }
 
+/* ---------- Map embed ---------- */
+.map-embed {
+  margin-top: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--stone-2);
+  aspect-ratio: 16 / 9;
+}
+.map-embed iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 /* ---------- Parish intro: photo beside text ---------- */
 .parish-intro { display: flex; gap: 40px; align-items: flex-start; }
 .parish-photo { width: 340px; flex-shrink: 0; margin: 0; }

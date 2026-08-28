@@ -41,8 +41,7 @@ Confirmed so far: Saturday Vigil 4:00 PM, Sunday 11:00 AM.
 
 ## 3. Development work
 
-- [ ] **Google Maps embed** on `contact.html` — there is a styled grey box
-      standing in for it.
+- [x] **Google Maps embed** on `contact.html`.
 - [ ] **Favicon** — no `favicon.ico` or `<link rel="icon">` on any page. The
       gold cedar crest in `app.js` would work as an SVG favicon.
 - [ ] **Open Graph / social preview tags** — none on any page, so links shared
