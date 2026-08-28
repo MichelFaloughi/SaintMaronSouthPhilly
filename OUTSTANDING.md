@@ -14,11 +14,11 @@ site or removed pending an answer.
       invented. Previously showed "Weekdays 9:00 AM".
 - [ ] **Confession times** — removed for the same reason. Previously showed
       "Before Liturgy".
-- [ ] **Parish phone number** — `contact.html` shows `(215) 000-0000`.
-- [ ] **Parish email** — `contact.html` shows `office@stmaronphila.org`.
-- [ ] **Office hours** — `contact.html` shows "Monday – Friday, 9:00 AM – 2:00 PM".
-- [ ] **Pastor's name** — `contact.html` shows "Rev. [Pastor's Name]". Also ask
-      whether other clergy or staff should be listed.
+- [x] **Parish phone number** — (215) 389-2000 office, (215) 334-1884 WhatsApp.
+- [x] **Parish email** — office@saintmaron.org.
+- [x] **Office hours** — Tuesday – Friday, 10:00 AM – 2:00 PM.
+- [x] **Pastor's name** — Father Andrawos Fadi El Tabchi. Still to ask: whether
+      other clergy or staff should be listed.
 - [ ] **Founding year** — the homepage claims "Est. 1892". Unverified; confirm
       or remove.
 - [ ] **Parish history** — the "A Maronite home in the heart of the city"
