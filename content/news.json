@@ -1,3 +1,16 @@
 {
-  "items": []
+  "items": [
+    {
+      "title": "Designer Bag Raffle",
+      "date": "2026-08-28",
+      "body": "🎁 Win a Designer Bag Valued at $2,000+!\nFor just $20, you’ll have a chance to win a beautiful designer bag valued at more than $2,000 — while helping us reach our $30,000 fundraising goal!\n\nWe’re selling 1,500 tickets at $20 each, with the drawing taking place during our Bingo Night in January 2027.\n\n$20 Ticket • $2,000+ Prize Value • $30,000 Youth Ministry Goal\n\nYour ticket gives you a chance to win while making a meaningful investment in our youth — the future of our church!",
+      "image": "/images/LV final.png",
+      "imageAlt": "",
+      "art": "window",
+      "link": {
+        "label": "Learn more",
+        "url": "https://www.zeffy.com/en-US/ticketing/louis-vuitton-hand-bag-raffle"
+      }
+    }
+  ]
 }
