@@ -34,6 +34,7 @@ collections:
           - label: News Items
             name: items
             widget: list
+            required: false
             label_singular: News Item
             summary: '{{fields.date}} — {{fields.title}}'
             collapsed: true
@@ -102,6 +103,7 @@ collections:
           - label: Bulletins
             name: items
             widget: list
+            required: false
             label_singular: Bulletin
             summary: '{{fields.date}} — {{fields.title}}'
             collapsed: true
