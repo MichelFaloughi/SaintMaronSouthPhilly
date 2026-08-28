@@ -1,16 +1,3 @@
 {
-  "items": [
-    {
-      "title": "test news title",
-      "date": "2026-08-28",
-      "body": "test news description blablabl\n\nakjshdflkjashdf",
-      "image": "/images/church.jpeg",
-      "imageAlt": "test",
-      "art": "window",
-      "link": {
-        "label": "Learn more",
-        "url": "https://stmaron.org"
-      }
-    }
-  ]
+  "items": []
 }
