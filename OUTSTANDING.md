@@ -19,8 +19,8 @@ site or removed pending an answer.
 - [x] **Office hours** — Tuesday – Friday, 10:00 AM – 2:00 PM.
 - [x] **Pastor's name** — Father Andrawos Fadi El Tabchi. Still to ask: whether
       other clergy or staff should be listed.
-- [ ] **Founding year** — the homepage claims "Est. 1892". Unverified; confirm
-      or remove.
+- [x] **Founding year** — 1892, confirmed by the 125th anniversary on
+      2 December 2017.
 - [ ] **Parish history** — the "A Maronite home in the heart of the city"
       section is written from general Maronite history, not this parish's own
       story. The second paragraph is explicitly marked placeholder.
