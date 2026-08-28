@@ -86,9 +86,9 @@
   // ---------- Chrome (header / footer) ----------
   var NAV = [
     ["index.html", "Home"],
+    ["contact.html", "Contact"],
     ["news.html", "News"],
     ["bulletin.html", "Bulletin"],
-    ["contact.html", "Contact"],
     ["donate.html", "Donate"],
   ];
 
