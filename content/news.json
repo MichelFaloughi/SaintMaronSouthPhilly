@@ -1,3 +1,16 @@
 {
-  "items": []
+  "items": [
+    {
+      "title": "Hi testing the news",
+      "date": "2026-08-28",
+      "body": "This is a test to see the news !",
+      "image": "/images/church.jpeg",
+      "imageAlt": "test description",
+      "art": "bells",
+      "link": {
+        "label": "Learn more",
+        "url": "michelfaloughi.com"
+      }
+    }
+  ]
 }
