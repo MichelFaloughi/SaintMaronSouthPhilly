@@ -122,7 +122,7 @@
         "<div><h3>Connect</h3><p><a href=\"contact.html\">Contact Us</a><br><a href=\"donate.html\">Support the Parish</a><br><a href=\"admin/\">Admin Portal</a></p></div>" +
         "</div>" +
         '<div class="footer-base">' +
-        "<span>&copy; 2026 Saint Maron Maronite Catholic Church. Demonstration site &mdash; placeholder content.</span>" +
+        "<span>&copy; 2026 Saint Maron Maronite Catholic Church</span>" +
         "<span>Eparchy of Saint Maron of Brooklyn</span>" +
         "</div></div>";
     }

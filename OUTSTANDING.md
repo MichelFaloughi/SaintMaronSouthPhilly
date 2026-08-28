@@ -34,10 +34,9 @@ Confirmed so far: Saturday Vigil 4:00 PM, Sunday 11:00 AM.
 
 ## 2. Blocks the site reading as official
 
-- [ ] **Remove the "Demonstration site — placeholder content" footer line**
-      (`app.js`, in `renderChrome`). It is deliberately there while the details
-      above are still placeholders — it should come out only once they are all
-      replaced, not before.
+- [x] **Remove the "Demonstration site — placeholder content" footer line.**
+      Removed 2026-08-28. The site now presents as official, so the remaining
+      items in section 1 are visible to parishioners as-is.
 
 ## 3. Development work
 
