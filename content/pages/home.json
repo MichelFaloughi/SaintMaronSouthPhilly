@@ -8,11 +8,19 @@
   },
   "liturgy": {
     "heading": "Weekend Divine Liturgies",
-    "subtitle": "celebrated on Saturday at 4:00 PM and Sunday at 11:00 AM.",
+    "subtitle": "And Holy Days of Obligation",
     "times": [
       {
-        "service": "For Holy Days of Obligation and other special liturgies, please refer to our weekly bulletin or visit the News page for the most up-to-date schedule.",
-        "time": "usually at 6:00 PM"
+        "service": "Saturday",
+        "time": "4:00 PM"
+      },
+      {
+        "service": "Sunday",
+        "time": "11:00 AM"
+      },
+      {
+        "service": "HDO",
+        "time": "6:00 PM"
       }
     ]
   },
