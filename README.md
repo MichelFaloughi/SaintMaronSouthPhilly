@@ -28,18 +28,28 @@ wired up. Nothing on `main` writes to the browser or to a server.
 
 ## Updating content
 
-News items and bulletins are edited through **Sveltia CMS** at `/admin`.
-Publishing from the CMS commits to this repo, which redeploys the site.
+All content is edited through **Sveltia CMS** at `/admin` — news, bulletins,
+and every heading, paragraph, Mass time, photo, and link between the site's
+header and footer. Publishing from the CMS commits to this repo, which
+redeploys the site.
 
-Content is stored as two JSON files, each holding `{ "items": [...] }`:
-
-| File | Fields |
+| File | Contents |
 | --- | --- |
-| `content/news.json` | `title`, `date` (`YYYY-MM-DD`), `body`; optional `image` / `imageAlt`, `art` (`window`, `cedar`, `candles`, `bells`), and `link` (`{ label, url }`) for a button |
-| `content/bulletins.json` | `title`, `date`, `file` (path to the PDF in `bulletins/`) |
+| `content/news.json` | `{ "items": [...] }` — `title`, `date` (`YYYY-MM-DD`), `body`; optional `image` / `imageAlt`, `art` (`window`, `cedar`, `candles`, `bells`), and `link` (`{ label, url }`) for a button |
+| `content/bulletins.json` | `{ "items": [...] }` — `title`, `date`, `file` (path to the PDF in `bulletins/`) |
+| `content/pages/*.json` | One file per page (home, contact, donate, news, bulletin) holding that page's editable text |
 
-Newest date sorts to the top. Editing the JSON by hand and pushing works too —
-the CMS is a convenience, not a requirement.
+Newest date sorts to the top of news and bulletins. Editing the JSON by hand
+and pushing works too — the CMS is a convenience, not a requirement.
+
+Page text reaches the page through `data-cms` attributes: an element tagged
+`data-cms="hero.lede"` gets its text from that key in the page's JSON file
+(`data-cms-tel`, `-wa`, `-mailto`, `-href`, `-src`, `-map`, `-dir`, and
+`-times` are variants for links, images, the map, and the Mass-times list —
+see `applyContent` in `app.js`). The HTML each page ships with is the
+fallback if the JSON cannot be fetched, so keep it in sync when renaming a
+field. Field names in `admin/config.yml`, keys in `content/pages/*.json`,
+and `data-cms` attributes in the HTML must all agree.
 
 ### Signing in to the CMS
 

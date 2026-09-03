@@ -1,0 +1,26 @@
+{
+  "header": {
+    "eyebrow": "We Would Love to Meet You",
+    "heading": "Contact & Visit",
+    "lede": "Questions about the parish, sacraments, or joining our community? Reach out — the parish office is happy to help."
+  },
+  "office": {
+    "heading": "Parish Office",
+    "address": "1013 Ellsworth Street\nPhiladelphia, PA 19147",
+    "phone": "(215) 389-2000",
+    "whatsapp": "(215) 334-1884",
+    "email": "office@saintmaron.org",
+    "hours": "Tuesday – Friday, 10:00 AM – 2:00 PM"
+  },
+  "clergy": {
+    "heading": "Clergy",
+    "pastor": "Father Andrawos Fadi El Tabchi",
+    "sacraments": "For baptisms, weddings, confessions, anointing of the sick, or to arrange a home or hospital visit, please contact the parish office.",
+    "newHere": "Welcome! Introduce yourself after any Liturgy."
+  },
+  "finding": {
+    "heading": "Finding Us",
+    "text": "We are located at 10th and Ellsworth Streets in the Bella Vista neighborhood of South Philadelphia, a short walk from the Italian Market. Street parking is available nearby.",
+    "mapAddress": "Saint Maron Maronite Catholic Church, 1013 Ellsworth St, Philadelphia, PA 19147"
+  }
+}

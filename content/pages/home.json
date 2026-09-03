@@ -1,0 +1,36 @@
+{
+  "hero": {
+    "eyebrow": "Est. 1892 · Eparchy of Saint Maron of Brooklyn",
+    "heading": "Saint Maron\nMaronite Catholic Church",
+    "lede": "One of the first Maronite parishes in North America, Saint Maron has been at home in South Philadelphia since 1892 and celebrated its 125th anniversary on Saturday, December 2, 2017. All are welcome at the table of the Lord.",
+    "bulletinButton": "This Week's Bulletin",
+    "visitButton": "Plan Your Visit"
+  },
+  "liturgy": {
+    "heading": "Divine Liturgy",
+    "subtitle": "Celebrated in English, Arabic, and Syriac",
+    "times": [
+      { "service": "Saturday Vigil", "time": "4:00 PM" },
+      { "service": "Sunday", "time": "11:00 AM" }
+    ]
+  },
+  "parish": {
+    "eyebrow": "Our Parish",
+    "heading": "A Maronite home in the heart of the city",
+    "photo": "images/church.jpeg",
+    "photoAlt": "The sanctuary of Saint Maron Church: the altar beneath its stone arch, with a crucifix above and kneeling angels at either side.",
+    "caption": "Our sanctuary in South Philadelphia.",
+    "story": "Founded by Lebanese immigrants at the close of the nineteenth century, Saint Maron has been a spiritual home for generations of families in South Philadelphia. We worship in the ancient Maronite tradition — one of the Eastern Catholic Churches in full communion with Rome — with a liturgy whose roots reach back to the earliest Christian communities of Antioch.",
+    "storyMore": "Whether your family has been here for a hundred years or you are stepping inside for the first time, you belong here."
+  },
+  "news": {
+    "eyebrow": "Happening at Saint Maron",
+    "heading": "Parish News",
+    "button": "All Parish News"
+  },
+  "callout": {
+    "heading": "Support the mission of our parish",
+    "text": "Your generosity sustains our liturgies, our building, and our outreach to the community.",
+    "button": "Ways to Give"
+  }
+}

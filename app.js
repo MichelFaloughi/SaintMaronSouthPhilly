@@ -45,6 +45,84 @@
   function getNews() { return load("news"); }
   function getBulletins() { return load("bulletins"); }
 
+  // ---------- Page content ----------
+  // Each page's editable text lives in content/pages/*.json, written by the
+  // "Site Pages" section of the CMS. Elements opt in with data-cms attributes
+  // naming a key path; the HTML they ship with is the fallback if the JSON is
+  // missing, so a fetch failure leaves the page exactly as authored.
+  var PAGES = {
+    "index.html": "content/pages/home.json",
+    "contact.html": "content/pages/contact.json",
+    "donate.html": "content/pages/donate.json",
+    "news.html": "content/pages/news.json",
+    "bulletin.html": "content/pages/bulletin.json",
+  };
+
+  function getPath(obj, path) {
+    return path.split(".").reduce(function (o, k) { return o == null ? undefined : o[k]; }, obj);
+  }
+
+  function textHtml(v) { return esc(v).replace(/\n/g, "<br>"); }
+
+  function phoneDigits(v) {
+    var d = String(v || "").replace(/\D/g, "");
+    return d.length === 10 ? "1" + d : d;
+  }
+
+  function eachCms(data, attr, fn) {
+    document.querySelectorAll("[" + attr + "]").forEach(function (el) {
+      var v = getPath(data, el.getAttribute(attr));
+      if (v == null) return;
+      if (typeof v === "string" && !v.trim()) return;
+      fn(el, v);
+    });
+  }
+
+  function applyContent(data) {
+    eachCms(data, "data-cms", function (el, v) { el.innerHTML = textHtml(v); });
+    eachCms(data, "data-cms-href", function (el, v) { el.href = safeUrl(v); });
+    eachCms(data, "data-cms-src", function (el, v) { el.src = v; });
+    eachCms(data, "data-cms-alt", function (el, v) { el.alt = v; });
+    eachCms(data, "data-cms-tel", function (el, v) {
+      el.textContent = v;
+      el.href = "tel:+" + phoneDigits(v);
+    });
+    eachCms(data, "data-cms-wa", function (el, v) {
+      el.textContent = v;
+      el.href = "https://wa.me/" + phoneDigits(v);
+    });
+    eachCms(data, "data-cms-mailto", function (el, v) {
+      el.textContent = v;
+      el.href = "mailto:" + v;
+    });
+    eachCms(data, "data-cms-map", function (el, v) {
+      el.src = "https://maps.google.com/maps?q=" + encodeURIComponent(v) + "&z=16&output=embed";
+    });
+    eachCms(data, "data-cms-dir", function (el, v) {
+      el.href = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(v);
+    });
+    eachCms(data, "data-cms-times", function (el, v) {
+      if (!Array.isArray(v)) return;
+      el.innerHTML = v.map(function (t) {
+        return "<dt>" + esc(t.service) + "</dt><dd>" + esc(t.time) + "</dd>";
+      }).join("");
+    });
+  }
+
+  function renderPage(active) {
+    var src = PAGES[active];
+    if (!src) return Promise.resolve();
+    return fetch(src, { cache: "no-cache" })
+      .then(function (res) {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        return res.json();
+      })
+      .then(applyContent)
+      .catch(function (err) {
+        console.warn("Could not load page content: " + err.message);
+      });
+  }
+
   // ---------- Helpers ----------
   function esc(s) {
     return String(s == null ? "" : s)
@@ -83,6 +161,8 @@
   ];
 
   function renderChrome(active) {
+    renderPage(active);
+
     var header = document.getElementById("site-header");
     if (header) {
       var links = NAV.map(function (n) {
@@ -196,6 +276,7 @@
   // ---------- Public API ----------
   window.STM = {
     renderChrome: renderChrome,
+    renderPage: renderPage,
     renderNews: renderNews,
     renderBulletins: renderBulletins,
     getNews: getNews,

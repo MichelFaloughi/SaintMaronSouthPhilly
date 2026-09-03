@@ -1,0 +1,19 @@
+{
+  "header": {
+    "eyebrow": "Stewardship & Generosity",
+    "heading": "Ways to Give",
+    "lede": "Every gift, of any size, helps sustain our liturgies, care for our historic church, and serve our neighbors. Giving is handled securely by trusted platforms — the parish website never collects payment information."
+  },
+  "zeffy": {
+    "heading": "Give Online with Zeffy",
+    "text": "One-time or recurring gifts by card or bank transfer. Zeffy is free for churches, so 100% of your gift reaches the parish.",
+    "button": "Give with Zeffy",
+    "url": "https://www.zeffy.com/en-US/donation-form/donate-to-make-a-difference-10511"
+  },
+  "venmo": {
+    "heading": "Give with Venmo",
+    "text": "A quick way to give from your phone. Send to @SaintMaronPhilly or use the button below.",
+    "button": "Give with Venmo",
+    "url": "https://account.venmo.com/u/SaintMaronPhilly"
+  }
+}
