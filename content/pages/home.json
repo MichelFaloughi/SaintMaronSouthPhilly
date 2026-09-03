@@ -2,16 +2,18 @@
   "hero": {
     "eyebrow": "Est. 1892 · Eparchy of Saint Maron of Brooklyn",
     "heading": "Saint Maron\nMaronite Catholic Church",
-    "lede": "One of the first Maronite parishes in North America, Saint Maron has been at home in South Philadelphia since 1892 and celebrated its 125th anniversary on Saturday, December 2, 2017. All are welcome at the table of the Lord.",
+    "lede": "One of the first Maronite parishes in North America, Saint Maron Church has faithfully served the faithful in South Philadelphia since 1892. For generations, our parish has been a home of prayer, worship, and communion, preserving and sharing the rich spiritual heritage of the Maronite Catholic Church.\n\nOn Saturday, December 2, 2017, we gave thanks to God as we celebrated the 125th anniversary of our parish. We remember with gratitude all those who, through their faith, sacrifice, and devotion, helped build the parish we cherish today.\n\nRooted in the faith of our fathers and strengthened by the grace of God, Saint Maron continues its mission of proclaiming the Gospel and celebrating the Sacred Mysteries. All are welcome at the Table of the Lord.",
     "bulletinButton": "This Week's Bulletin",
     "visitButton": "Plan Your Visit"
   },
   "liturgy": {
-    "heading": "Divine Liturgy",
-    "subtitle": "Celebrated in English, Arabic, and Syriac",
+    "heading": "Weekend Divine Liturgies",
+    "subtitle": "celebrated on Saturday at 4:00 PM and Sunday at 11:00 AM.",
     "times": [
-      { "service": "Saturday Vigil", "time": "4:00 PM" },
-      { "service": "Sunday", "time": "11:00 AM" }
+      {
+        "service": "For Holy Days of Obligation and other special liturgies, please refer to our weekly bulletin or visit the News page for the most up-to-date schedule.",
+        "time": "usually at 6:00 PM"
+      }
     ]
   },
   "parish": {
