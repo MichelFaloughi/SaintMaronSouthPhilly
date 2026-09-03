@@ -186,8 +186,7 @@
         '<div class="wrap">' +
         '<div class="footer-grid">' +
         "<div><h3>Saint Maron Church</h3>" +
-        "<p>1013 Ellsworth Street<br>Philadelphia, PA 19147</p>" +
-        '<p class="blessing">Peace be with you &middot; &#1587;&#1604;&#1575;&#1605; &#1604;&#1603;&#1605;</p></div>' +
+        "<p>1013 Ellsworth Street<br>Philadelphia, PA 19147</p></div>" +
         "<div><h3>Visit</h3><p><a href=\"index.html\">Home</a><br><a href=\"news.html\">Parish News</a><br><a href=\"bulletin.html\">Weekly Bulletin</a></p></div>" +
         "<div><h3>Connect</h3><p><a href=\"contact.html\">Contact Us</a><br><a href=\"donate.html\">Support the Parish</a><br><a href=\"admin/\">Admin Portal</a></p></div>" +
         "</div>" +
