@@ -143,37 +143,46 @@ collections:
           - label: Top Banner
             name: hero
             widget: object
+            required: false
             collapsed: true
             fields:
               - label: Small line above the title
                 name: eyebrow
                 widget: string
+                required: false
               - label: Page title
                 name: heading
                 widget: text
+                required: false
                 hint: Line breaks are kept, so you can split the title over two lines.
               - label: Welcome paragraph
                 name: lede
                 widget: text
+                required: false
               - label: First button
                 name: bulletinButton
                 widget: string
+                required: false
                 hint: The button that opens the Weekly Bulletin page.
               - label: Second button
                 name: visitButton
                 widget: string
+                required: false
                 hint: The button that opens the Contact page.
           - label: Divine Liturgy Card
             name: liturgy
             widget: object
+            required: false
             collapsed: true
             fields:
               - label: Card title
                 name: heading
                 widget: string
+                required: false
               - label: Line under the title
                 name: subtitle
                 widget: string
+                required: false
               - label: Liturgy times
                 name: times
                 widget: list
@@ -182,52 +191,62 @@ collections:
                 summary: '{{fields.service}} — {{fields.time}}'
                 hint: One row per service. Add rows for holy days, remove them after.
                 fields:
-                  - { label: Service, name: service, widget: string, hint: 'For example "Saturday Vigil" or "Sunday".' }
-                  - { label: Time, name: time, widget: string, hint: 'For example "4:00 PM".' }
+                  - { label: Service, name: service, widget: string, hint: 'For example "Saturday Vigil" or "Sunday".', required: false }
+                  - { label: Time, name: time, widget: string, hint: 'For example "4:00 PM".', required: false }
           - label: Our Parish
             name: parish
             widget: object
+            required: false
             collapsed: true
             fields:
               - label: Small line above the title
                 name: eyebrow
                 widget: string
+                required: false
               - label: Section title
                 name: heading
                 widget: string
+                required: false
               - label: Photo
                 name: photo
                 widget: image
+                required: false
               - label: Photo description
                 name: photoAlt
                 widget: string
+                required: false
                 hint: Describes the photo for people using a screen reader.
               - label: Caption under the photo
                 name: caption
                 widget: string
+                required: false
               - label: Parish story
                 name: story
                 widget: text
+                required: false
                 hint: The history of the parish, in your own words.
               - label: Closing line
                 name: storyMore
                 widget: text
+                required: false
           - label: Parish News Section
             name: news
             widget: object
+            required: false
             collapsed: true
             fields:
-              - { label: Small line above the title, name: eyebrow, widget: string }
-              - { label: Section title, name: heading, widget: string }
-              - { label: Button, name: button, widget: string, hint: The button that opens the News page. }
+              - { label: Small line above the title, name: eyebrow, widget: string, required: false }
+              - { label: Section title, name: heading, widget: string, required: false }
+              - { label: Button, name: button, widget: string, hint: The button that opens the News page., required: false }
           - label: Support Banner
             name: callout
             widget: object
+            required: false
             collapsed: true
             fields:
-              - { label: Title, name: heading, widget: string }
-              - { label: Text, name: text, widget: text }
-              - { label: Button, name: button, widget: string, hint: The button that opens the Donate page. }
+              - { label: Title, name: heading, widget: string, required: false }
+              - { label: Text, name: text, widget: text, required: false }
+              - { label: Button, name: button, widget: string, hint: The button that opens the Donate page., required: false }
 
       - name: contact
         label: Contact Page
@@ -237,50 +256,58 @@ collections:
           - label: Page Heading
             name: header
             widget: object
+            required: false
             collapsed: true
             fields:
-              - { label: Small line above the title, name: eyebrow, widget: string }
-              - { label: Page title, name: heading, widget: string }
-              - { label: Welcome paragraph, name: lede, widget: text }
+              - { label: Small line above the title, name: eyebrow, widget: string, required: false }
+              - { label: Page title, name: heading, widget: string, required: false }
+              - { label: Welcome paragraph, name: lede, widget: text, required: false }
           - label: Parish Office
             name: office
             widget: object
+            required: false
             collapsed: true
             fields:
-              - { label: Box title, name: heading, widget: string }
+              - { label: Box title, name: heading, widget: string, required: false }
               - label: Address
                 name: address
                 widget: text
+                required: false
                 hint: Line breaks are kept.
               - label: Phone
                 name: phone
                 widget: string
+                required: false
                 hint: 'For example (215) 389-2000. The call link is made automatically.'
               - label: WhatsApp
                 name: whatsapp
                 widget: string
+                required: false
                 hint: The WhatsApp link is made automatically from the number.
-              - { label: Email, name: email, widget: string }
-              - { label: Office hours, name: hours, widget: string }
+              - { label: Email, name: email, widget: string, required: false }
+              - { label: Office hours, name: hours, widget: string, required: false }
           - label: Clergy
             name: clergy
             widget: object
+            required: false
             collapsed: true
             fields:
-              - { label: Box title, name: heading, widget: string }
-              - { label: Pastor, name: pastor, widget: string }
-              - { label: Sacraments text, name: sacraments, widget: text }
-              - { label: New to the parish text, name: newHere, widget: text }
+              - { label: Box title, name: heading, widget: string, required: false }
+              - { label: Pastor, name: pastor, widget: string, required: false }
+              - { label: Sacraments text, name: sacraments, widget: text, required: false }
+              - { label: New to the parish text, name: newHere, widget: text, required: false }
           - label: Finding Us
             name: finding
             widget: object
+            required: false
             collapsed: true
             fields:
-              - { label: Box title, name: heading, widget: string }
-              - { label: Text, name: text, widget: text }
+              - { label: Box title, name: heading, widget: string, required: false }
+              - { label: Text, name: text, widget: text, required: false }
               - label: Map address
                 name: mapAddress
                 widget: string
+                required: false
                 hint: The map and the "Get directions" link both point at this address.
 
       - name: donate
@@ -291,29 +318,32 @@ collections:
           - label: Page Heading
             name: header
             widget: object
+            required: false
             collapsed: true
             fields:
-              - { label: Small line above the title, name: eyebrow, widget: string }
-              - { label: Page title, name: heading, widget: string }
-              - { label: Welcome paragraph, name: lede, widget: text }
+              - { label: Small line above the title, name: eyebrow, widget: string, required: false }
+              - { label: Page title, name: heading, widget: string, required: false }
+              - { label: Welcome paragraph, name: lede, widget: text, required: false }
           - label: Zeffy Card
             name: zeffy
             widget: object
+            required: false
             collapsed: true
             fields:
-              - { label: Card title, name: heading, widget: string }
-              - { label: Text, name: text, widget: text }
-              - { label: Button, name: button, widget: string }
-              - { label: Donation link, name: url, widget: string, hint: 'Paste the full address, starting with https://' }
+              - { label: Card title, name: heading, widget: string, required: false }
+              - { label: Text, name: text, widget: text, required: false }
+              - { label: Button, name: button, widget: string, required: false }
+              - { label: Donation link, name: url, widget: string, hint: 'Paste the full address, starting with https://', required: false }
           - label: Venmo Card
             name: venmo
             widget: object
+            required: false
             collapsed: true
             fields:
-              - { label: Card title, name: heading, widget: string }
-              - { label: Text, name: text, widget: text }
-              - { label: Button, name: button, widget: string }
-              - { label: Donation link, name: url, widget: string, hint: 'Paste the full address, starting with https://' }
+              - { label: Card title, name: heading, widget: string, required: false }
+              - { label: Text, name: text, widget: text, required: false }
+              - { label: Button, name: button, widget: string, required: false }
+              - { label: Donation link, name: url, widget: string, hint: 'Paste the full address, starting with https://', required: false }
 
       - name: news-page
         label: News Page
@@ -323,11 +353,12 @@ collections:
           - label: Page Heading
             name: header
             widget: object
+            required: false
             collapsed: true
             fields:
-              - { label: Small line above the title, name: eyebrow, widget: string }
-              - { label: Page title, name: heading, widget: string }
-              - { label: Welcome paragraph, name: lede, widget: text }
+              - { label: Small line above the title, name: eyebrow, widget: string, required: false }
+              - { label: Page title, name: heading, widget: string, required: false }
+              - { label: Welcome paragraph, name: lede, widget: text, required: false }
 
       - name: bulletin-page
         label: Bulletin Page
@@ -337,12 +368,14 @@ collections:
           - label: Page Heading
             name: header
             widget: object
+            required: false
             collapsed: true
             fields:
-              - { label: Small line above the title, name: eyebrow, widget: string }
-              - { label: Page title, name: heading, widget: string }
-              - { label: Welcome paragraph, name: lede, widget: text }
+              - { label: Small line above the title, name: eyebrow, widget: string, required: false }
+              - { label: Page title, name: heading, widget: string, required: false }
+              - { label: Welcome paragraph, name: lede, widget: text, required: false }
           - label: Older bulletins note
             name: olderNote
             widget: text
+            required: false
             hint: The italic line under the list of bulletins.

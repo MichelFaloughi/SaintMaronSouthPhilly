@@ -69,37 +69,40 @@
     return d.length === 10 ? "1" + d : d;
   }
 
+  // A missing key leaves the baked-in HTML alone; an empty string is a
+  // deliberate clearing by the editor and blanks the element.
   function eachCms(data, attr, fn) {
     document.querySelectorAll("[" + attr + "]").forEach(function (el) {
       var v = getPath(data, el.getAttribute(attr));
       if (v == null) return;
-      if (typeof v === "string" && !v.trim()) return;
       fn(el, v);
     });
   }
 
   function applyContent(data) {
     eachCms(data, "data-cms", function (el, v) { el.innerHTML = textHtml(v); });
-    eachCms(data, "data-cms-href", function (el, v) { el.href = safeUrl(v); });
-    eachCms(data, "data-cms-src", function (el, v) { el.src = v; });
+    eachCms(data, "data-cms-href", function (el, v) { if (String(v).trim()) el.href = safeUrl(v); });
+    eachCms(data, "data-cms-src", function (el, v) { if (String(v).trim()) el.src = v; });
     eachCms(data, "data-cms-alt", function (el, v) { el.alt = v; });
     eachCms(data, "data-cms-tel", function (el, v) {
       el.textContent = v;
-      el.href = "tel:+" + phoneDigits(v);
+      var d = phoneDigits(v);
+      if (d) el.href = "tel:+" + d; else el.removeAttribute("href");
     });
     eachCms(data, "data-cms-wa", function (el, v) {
       el.textContent = v;
-      el.href = "https://wa.me/" + phoneDigits(v);
+      var d = phoneDigits(v);
+      if (d) el.href = "https://wa.me/" + d; else el.removeAttribute("href");
     });
     eachCms(data, "data-cms-mailto", function (el, v) {
       el.textContent = v;
-      el.href = "mailto:" + v;
+      if (String(v).trim()) el.href = "mailto:" + v; else el.removeAttribute("href");
     });
     eachCms(data, "data-cms-map", function (el, v) {
-      el.src = "https://maps.google.com/maps?q=" + encodeURIComponent(v) + "&z=16&output=embed";
+      if (String(v).trim()) el.src = "https://maps.google.com/maps?q=" + encodeURIComponent(v) + "&z=16&output=embed";
     });
     eachCms(data, "data-cms-dir", function (el, v) {
-      el.href = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(v);
+      if (String(v).trim()) el.href = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(v);
     });
     eachCms(data, "data-cms-times", function (el, v) {
       if (!Array.isArray(v)) return;
@@ -233,7 +236,7 @@
       '<div class="card-body">' +
       '<span class="date">' + esc(prettyDate(n.date)) + "</span>" +
       "<h3>" + esc(n.title) + "</h3>" +
-      "<p>" + esc(n.body) + "</p>" +
+      "<p>" + textHtml(n.body) + "</p>" +
       link +
       "</div></article>"
     );
