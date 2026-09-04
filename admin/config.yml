@@ -128,6 +128,40 @@ collections:
                 public_folder: /bulletins
                 hint: Upload the bulletin PDF.
 
+  # Colors and lettering, chosen from presets defined in app.js (PALETTES and
+  # FONT_PAIRS). The values here must match the keys there.
+  - name: design
+    label: Design
+    icon: palette
+    files:
+      - name: theme
+        label: Colors & Fonts
+        file: content/theme.json
+        description: The look of the whole site. Changes apply everywhere at once.
+        fields:
+          - label: Color scheme
+            name: palette
+            widget: select
+            required: false
+            default: burgundy
+            options:
+              - { label: Burgundy & Gold (classic), value: burgundy }
+              - { label: Cedar Green & Gold, value: cedar }
+              - { label: Marian Blue & Gold, value: marian }
+              - { label: Byzantine Plum & Gold, value: plum }
+            hint: Every scheme keeps the gold accents and the light stone background.
+          - label: Lettering
+            name: fonts
+            widget: select
+            required: false
+            default: marcellus
+            options:
+              - { label: Marcellus (classic), value: marcellus }
+              - { label: Cinzel — Roman capitals, value: cinzel }
+              - { label: Playfair — stately, value: playfair }
+              - { label: Garamond — bookish, value: garamond }
+            hint: The first font styles headings; each pairing includes a matching reading font.
+
   # Every heading, paragraph, time, photo, and link between the site's header
   # and footer. The field names are a contract with the data-cms attributes in
   # the HTML pages; renaming one here breaks the overlay in app.js.

@@ -11,7 +11,7 @@ window.STM_ART = (function () {
       '<svg viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="' + label + '">' +
       '<defs>' +
       '<linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">' +
-      '<stop offset="0" stop-color="#7d2b3c"/><stop offset="1" stop-color="#46151f"/>' +
+      '<stop offset="0" style="stop-color:var(--burgundy, #7d2b3c)"/><stop offset="1" style="stop-color:var(--burgundy-deep, #46151f)"/>' +
       '</linearGradient>' +
       '</defs>' +
       '<rect width="640" height="480" fill="url(#g1)"/>' +
@@ -24,7 +24,7 @@ window.STM_ART = (function () {
   var archWindow =
     '<g opacity="0.9">' +
     '<path d="M240 400 L240 210 A80 80 0 0 1 400 210 L400 400 Z" fill="none" stroke="#d3b563" stroke-width="3"/>' +
-    '<path d="M262 400 L262 220 A58 58 0 0 1 378 220 L378 400 Z" fill="#6b2233" stroke="#b08a2e" stroke-width="1.5"/>' +
+    '<path d="M262 400 L262 220 A58 58 0 0 1 378 220 L378 400 Z" style="fill:var(--burgundy, #6b2233)" stroke="#b08a2e" stroke-width="1.5"/>' +
     '<line x1="320" y1="162" x2="320" y2="400" stroke="#b08a2e" stroke-width="1.5"/>' +
     '<line x1="262" y1="290" x2="378" y2="290" stroke="#b08a2e" stroke-width="1.5"/>' +
     '<circle cx="320" cy="120" r="26" fill="none" stroke="#d3b563" stroke-width="2.5"/>' +
