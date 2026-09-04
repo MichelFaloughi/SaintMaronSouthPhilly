@@ -50,17 +50,8 @@
     </div>
   </section>
 
-  <section class="section alt">
-    <div class="wrap">
-      <div class="section-head center reveal">
-        <span class="eyebrow" data-cms="news.eyebrow">Happening at Saint Maron</span>
-        <h2 data-cms="news.heading">Parish News</h2>
-        <hr class="rule center">
-      </div>
-      <div id="home-news" class="news-grid"></div>
-      <p style="text-align:center; margin-top:34px;"><a class="btn" href="news.html" data-cms="news.button">All Parish News</a></p>
-    </div>
-  </section>
+  <!-- Sections added by the parish office through the CMS render here. -->
+  <div id="home-sections"></div>
 
   <section class="section">
     <div class="wrap">
@@ -80,7 +71,6 @@
   <script src="app.js"></script>
   <script>
     STM.renderChrome("index.html");
-    STM.renderNews("home-news", 3);
   </script>
 </body>
 </html>

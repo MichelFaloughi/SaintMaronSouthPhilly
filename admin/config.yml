@@ -263,15 +263,58 @@ collections:
                 name: storyMore
                 widget: text
                 required: false
-          - label: Parish News Section
-            name: news
-            widget: object
+          - label: Extra Sections
+            name: sections
+            widget: list
             required: false
+            label_singular: Section
+            summary: '{{fields.heading}}'
             collapsed: true
+            hint: Add as many as you like and drag to reorder. They appear between "Our Parish" and the support banner.
             fields:
-              - { label: Small line above the title, name: eyebrow, widget: string, required: false }
-              - { label: Section title, name: heading, widget: string, required: false }
-              - { label: Button, name: button, widget: string, hint: The button that opens the News page., required: false }
+              - label: Layout
+                name: layout
+                widget: select
+                required: false
+                default: text
+                options:
+                  - { label: Text only, value: text }
+                  - { label: Photo on the left, value: photo-left }
+                  - { label: Photo on the right, value: photo-right }
+                  - { label: Highlight banner, value: banner }
+                hint: Photo layouts need a photo; the banner is a dark strip with a button, like the support banner.
+              - label: Small line above the title
+                name: eyebrow
+                widget: string
+                required: false
+              - label: Title
+                name: heading
+                widget: string
+                required: false
+              - label: Text
+                name: text
+                widget: text
+                required: false
+              - label: Photo
+                name: image
+                widget: image
+                required: false
+                hint: Used by the photo layouts.
+              - label: Photo description
+                name: imageAlt
+                widget: string
+                required: false
+                hint: Describes the photo for people using a screen reader.
+              - label: Buttons
+                name: buttons
+                widget: list
+                required: false
+                label_singular: Button
+                summary: '{{fields.label}}'
+                hint: Optional. The first button is gold; any others are outlined.
+                fields:
+                  - { label: Button text, name: label, widget: string, required: false }
+                  - { label: Link address, name: url, widget: string, required: false, hint: 'Paste the full address starting with https://, or a page name like contact.html' }
           - label: Support Banner
             name: callout
             widget: object

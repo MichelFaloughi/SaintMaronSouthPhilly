@@ -170,6 +170,67 @@
       });
   }
 
+  // ---------- Custom sections ----------
+  // The Home Page entry in the CMS carries a "sections" list the parish
+  // office can add to freely. Each item picks one of the layouts below and
+  // renders into the #home-sections container between the fixed sections.
+  function sectionButtons(buttons, center) {
+    if (!Array.isArray(buttons)) return "";
+    var links = buttons
+      .filter(function (b) { return b && (b.label || b.url); })
+      .map(function (b, i) {
+        var url = safeUrl(b.url) || "#";
+        var ext = /^(https?:)?\/\//i.test(url) ? ' target="_blank" rel="noopener"' : "";
+        return '<a class="btn' + (i === 0 ? " primary" : "") + '" href="' + esc(url) + '"' + ext + ">" + esc(b.label || "Learn more") + "</a>";
+      }).join("");
+    if (!links) return "";
+    return '<div class="section-actions' + (center ? " center" : "") + '">' + links + "</div>";
+  }
+
+  function sectionHtml(s, i) {
+    if (!s) return "";
+    var layout = s.layout || "text";
+    var alt = i % 2 === 0 ? " alt" : "";
+    var eyebrow = s.eyebrow ? '<span class="eyebrow">' + esc(s.eyebrow) + "</span>" : "";
+    var heading = s.heading ? "<h2>" + esc(s.heading) + "</h2>" : "";
+    var text = s.text ? '<p class="body">' + textHtml(s.text) + "</p>" : "";
+    var img = s.image
+      ? '<figure class="parish-photo"><img src="' + esc(s.image) + '" alt="' + esc(s.imageAlt || "") + '"></figure>'
+      : "";
+
+    if (layout === "banner") {
+      return (
+        '<section class="section"><div class="wrap"><div class="callout">' +
+        "<div>" + heading + (s.text ? "<p>" + textHtml(s.text) + "</p>" : "") + "</div>" +
+        sectionButtons(s.buttons, false) +
+        "</div></div></section>"
+      );
+    }
+
+    if ((layout === "photo-left" || layout === "photo-right") && img) {
+      var col = "<div>" + eyebrow + heading + (heading ? '<hr class="rule">' : "") + text + sectionButtons(s.buttons, false) + "</div>";
+      return (
+        '<section class="section' + alt + '"><div class="wrap parish-intro custom">' +
+        (layout === "photo-left" ? img + col : col + img) +
+        "</div></section>"
+      );
+    }
+
+    // Text-only layout, also the fallback when a photo layout has no photo.
+    return (
+      '<section class="section' + alt + '"><div class="wrap custom-section center">' +
+      '<div class="section-head center">' + eyebrow + heading + (heading ? '<hr class="rule center">' : "") + "</div>" +
+      text + sectionButtons(s.buttons, true) +
+      "</div></section>"
+    );
+  }
+
+  function renderSections(list) {
+    var el = document.getElementById("home-sections");
+    if (!el || !Array.isArray(list)) return;
+    el.innerHTML = list.map(sectionHtml).join("");
+  }
+
   function renderPage(active) {
     var src = PAGES[active];
     if (!src) return Promise.resolve();
@@ -178,7 +239,10 @@
         if (!res.ok) throw new Error("HTTP " + res.status);
         return res.json();
       })
-      .then(applyContent)
+      .then(function (data) {
+        applyContent(data);
+        renderSections(data.sections);
+      })
       .catch(function (err) {
         console.warn("Could not load page content: " + err.message);
       });

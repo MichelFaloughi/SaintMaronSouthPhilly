@@ -243,7 +243,15 @@ h3 { font-size: 1.25rem; }
 }
 
 /* ---------- Parish intro: photo beside text ---------- */
+/* Sections added through the CMS (rendered by app.js into #home-sections) */
+.custom-section .body { max-width: 760px; }
+.custom-section.center .body { margin: 0 auto; text-align: center; }
+.section-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+.section-actions.center { justify-content: center; }
+
 .parish-intro { display: flex; gap: 40px; align-items: flex-start; }
+.parish-intro > div { flex: 1; min-width: 0; }
+.parish-intro.custom { align-items: center; }
 .parish-photo { width: 340px; flex-shrink: 0; margin: 0; }
 .parish-photo img {
   width: 100%;
