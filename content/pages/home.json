@@ -33,7 +33,22 @@
     "story": "“Keep the commandment without stain or reproach until the appearance of our Lord Jesus Christ.”\n(1 Timothy 6:14)",
     "storyMore": "Join us in prayer and celebration as we rejoice in the ordination of Conor Donnelly to the Minor Orders of Cantor, Lector, and Subdeacon on Sunday, September 13, 2026, at 11:00 AM at Saint Maron Church."
   },
-  "sections": [],
+  "sections": [
+    {
+      "layout": "photo-right",
+      "eyebrow": "Support Saint Maron Church",
+      "heading": "Kitchen Upgrade",
+      "text": "We Need Your Support\nWe invite you to be part of this important project. Every gift makes a difference, and together, our community can make this kitchen upgrade possible.\n\nWhether you are able to make a small contribution or a larger gift, your generosity will be deeply appreciated. We also ask you to keep this project in your prayers and share this appeal with others who may wish to support our parish.\n\nThank you for standing with us and for helping us strengthen the place where fellowship, celebration, and service come together.",
+      "image": "/images/Church Bulletin Poster.png",
+      "imageAlt": "Thank You for Your Support",
+      "buttons": [
+        {
+          "label": "Donate",
+          "url": "https://www.zeffy.com/en-US/donation-form/kitchen-upgrade-project"
+        }
+      ]
+    }
+  ],
   "callout": {
     "heading": "Support the mission of our parish",
     "text": "Your generosity sustains our liturgies, our building, and our outreach to the community.",
