@@ -398,6 +398,67 @@
     });
   }
 
+  // ---------- Lightbox ----------
+  // Clicking a content photo (the parish photo, CMS section photos, news
+  // card images) opens it enlarged in an overlay. The click handler is
+  // delegated from the document so photos added by later renders are
+  // covered without re-wiring; the overlay itself is built on first use.
+  var lightbox = null;
+  var lightboxReturnFocus = null;
+
+  function buildLightbox() {
+    var el = document.createElement("div");
+    el.className = "lightbox";
+    el.hidden = true;
+    el.setAttribute("role", "dialog");
+    el.setAttribute("aria-modal", "true");
+    el.setAttribute("aria-label", "Enlarged photo");
+    el.innerHTML =
+      '<button type="button" class="lightbox-close" aria-label="Close enlarged photo">&times;</button>' +
+      '<figure><img alt=""><figcaption></figcaption></figure>';
+    el.addEventListener("click", closeLightbox);
+    document.body.appendChild(el);
+    return el;
+  }
+
+  function openLightbox(img) {
+    lightbox = lightbox || buildLightbox();
+    var big = lightbox.querySelector("img");
+    big.src = img.currentSrc || img.src;
+    big.alt = img.alt || "";
+    // Prefer the photo's visible caption; fall back to its alt text.
+    var fig = img.closest("figure");
+    var capEl = fig && fig.querySelector("figcaption");
+    lightbox.querySelector("figcaption").textContent =
+      (capEl && capEl.textContent) || img.alt || "";
+    lightboxReturnFocus = document.activeElement;
+    lightbox.hidden = false;
+    requestAnimationFrame(function () { lightbox.classList.add("open"); });
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", onLightboxKey);
+    lightbox.querySelector(".lightbox-close").focus();
+  }
+
+  function closeLightbox() {
+    if (!lightbox || lightbox.hidden) return;
+    lightbox.classList.remove("open");
+    lightbox.hidden = true;
+    document.body.style.overflow = "";
+    document.removeEventListener("keydown", onLightboxKey);
+    if (lightboxReturnFocus && lightboxReturnFocus.focus) lightboxReturnFocus.focus();
+  }
+
+  function onLightboxKey(e) {
+    if (e.key === "Escape") closeLightbox();
+    // The close button is the dialog's only control; keep Tab on it.
+    if (e.key === "Tab") { e.preventDefault(); lightbox.querySelector(".lightbox-close").focus(); }
+  }
+
+  document.addEventListener("click", function (e) {
+    var img = e.target.closest && e.target.closest(".parish-photo img, .card-img img");
+    if (img) openLightbox(img);
+  });
+
   // ---------- Public API ----------
   window.STM = {
     renderChrome: renderChrome,
