@@ -47,6 +47,15 @@
           "url": "https://www.zeffy.com/en-US/donation-form/kitchen-upgrade-project"
         }
       ]
+    },
+    {
+      "layout": "text",
+      "eyebrow": "",
+      "heading": "Parish Website & Email Update",
+      "text": "Parish Email & Website Update\n\nWe are pleased to announce that our parish has officially migrated to the @saintmaronphilly.org email domain, and our new parish website is www.saintmaronphilly.org. \n\nGoing forward, all official parish communications will be sent from this domain, including emails from pator@saintmaronphilly.org, office@saintmaronphilly.org, SMOC@saintmaronphilly.org, ccd@saintmaronphilly.org, myo@saintmaronphilly.org, and mya@saintmaronphilly.org. \n\nIf you are not receiving parish emails, please check your spam or junk folder and mark our emails as “Safe” or “Trusted Sender” to ensure future messages reach your inbox. We encourage everyone to save our new website and email addresses in their contacts and stay connected with our parish through www.saintmaronphilly.org.",
+      "image": "/images/Screenshot 2026-09-24 140751.png",
+      "imageAlt": "",
+      "buttons": []
     }
   ],
   "callout": {
