@@ -35,6 +35,15 @@
   },
   "sections": [
     {
+      "layout": "photo-right",
+      "eyebrow": "",
+      "heading": "Christmas 2026 Cash Raffle",
+      "text": "Your Chance to Win Cash, Our Chance to Grow!\nShare the link with your friends and family to spread the Christmas cheer, support our Church, and give someone a chance to win CASH! \nhttps://www.zeffy.com/en-US/ticketing/cash-raffle--2026\n#ChristmasCashRaffle2026 #WinCash #EveryTicketCounts",
+      "image": "/images/CASH.png",
+      "imageAlt": "2026 Christmas Cash Raffle Flyer",
+      "buttons": []
+    },
+    {
       "layout": "photo-left",
       "eyebrow": "",
       "heading": "Parish Website & Email Update",
@@ -56,15 +65,6 @@
           "url": "https://www.zeffy.com/en-US/donation-form/kitchen-upgrade-project"
         }
       ]
-    },
-    {
-      "layout": "photo-right",
-      "eyebrow": "",
-      "heading": "Christmas 2026 Cash Raffle",
-      "text": "Your Chance to Win Cash, Our Chance to Grow!\nShare the link with your friends and family to spread the Christmas cheer, support our Church, and give someone a chance to win CASH! \nhttps://www.zeffy.com/en-US/ticketing/cash-raffle--2026\n#ChristmasCashRaffle2026 #WinCash #EveryTicketCounts",
-      "image": "/images/CASH.png",
-      "imageAlt": "2026 Christmas Cash Raffle Flyer",
-      "buttons": []
     }
   ],
   "callout": {
