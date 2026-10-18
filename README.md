@@ -38,6 +38,7 @@ redeploys the site.
 | `content/news.json` | `{ "items": [...] }` — `title`, `date` (`YYYY-MM-DD`), `body`; optional `image` / `imageAlt`, `art` (`window`, `cedar`, `candles`, `bells`), and `link` (`{ label, url }`) for a button |
 | `content/bulletins.json` | `{ "items": [...] }` — `title`, `date`, `file` (path to the PDF in `bulletins/`) |
 | `content/pages/*.json` | One file per page (home, contact, donate, news, bulletin) holding that page's editable text |
+| `content/theme.json` | `palette` and `fonts`, chosen from the presets in `theme-presets.js` (the "Design" entry in the CMS) |
 
 Newest date sorts to the top of news and bulletins. Editing the JSON by hand
 and pushing works too — the CMS is a convenience, not a requirement.
@@ -50,6 +51,13 @@ see `applyContent` in `app.js`). The HTML each page ships with is the
 fallback if the JSON cannot be fetched, so keep it in sync when renaming a
 field. Field names in `admin/config.yml`, keys in `content/pages/*.json`,
 and `data-cms` attributes in the HTML must all agree.
+
+The "Design" entry gets a live preview: `admin/index.html` registers a
+preview template that draws a sample of the home page with the site's own
+`styles.css` and the chosen colors and fonts. It reads the same
+`theme-presets.js` the public pages use, so adding a palette or font pairing
+there updates the site, the preview, and (after adding the option to
+`admin/config.yml`) the editing form together.
 
 ### Signing in to the CMS
 

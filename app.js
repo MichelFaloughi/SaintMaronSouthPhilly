@@ -114,34 +114,11 @@
 
   // ---------- Theme ----------
   // The "Design" entry in the CMS writes content/theme.json: a palette name
-  // and a font-pairing name, both chosen from preset lists. Presets are
-  // defined here (and only here) so an unknown name simply leaves the site
-  // in its default burgundy-and-Marcellus look.
-  var PALETTES = {
-    burgundy: null, // the default, baked into styles.css
-    cedar: { "--burgundy": "#2f4a34", "--burgundy-deep": "#1c2f21" },
-    marian: { "--burgundy": "#2c3e6b", "--burgundy-deep": "#1a2747" },
-    plum: { "--burgundy": "#532b58", "--burgundy-deep": "#371a3b" },
-  };
-
-  var FONT_PAIRS = {
-    marcellus: null, // the default, loaded by each page's own <link>
-    cinzel: {
-      css: "family=Cinzel:wght@400;600&family=Lora:ital,wght@0,400;0,600;1,400",
-      display: '"Cinzel", "Times New Roman", serif',
-      body: '"Lora", Georgia, serif',
-    },
-    playfair: {
-      css: "family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Crimson+Pro:ital,wght@0,400;0,600;1,400",
-      display: '"Playfair Display", "Times New Roman", serif',
-      body: '"Crimson Pro", Georgia, serif',
-    },
-    garamond: {
-      css: "family=EB+Garamond:ital,wght@0,400;0,600;1,400",
-      display: '"EB Garamond", "Times New Roman", serif',
-      body: '"EB Garamond", Georgia, serif',
-    },
-  };
+  // and a font-pairing name, both chosen from the preset lists in
+  // theme-presets.js (shared with the CMS preview). An unknown name simply
+  // leaves the site in its default burgundy-and-Marcellus look.
+  var PALETTES = window.STM_THEME.PALETTES;
+  var FONT_PAIRS = window.STM_THEME.FONT_PAIRS;
 
   function applyTheme() {
     return fetch("content/theme.json", { cache: "no-cache" })
@@ -159,7 +136,7 @@
         if (pair) {
           var link = document.createElement("link");
           link.rel = "stylesheet";
-          link.href = "https://fonts.googleapis.com/css2?" + pair.css + "&display=swap";
+          link.href = window.STM_THEME.fontsUrl(pair);
           document.head.appendChild(link);
           root.setProperty("--display", pair.display);
           root.setProperty("--body", pair.body);
