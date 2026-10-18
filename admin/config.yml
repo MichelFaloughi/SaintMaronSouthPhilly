@@ -114,12 +114,16 @@ collections:
             widget: list
             required: false
             label_singular: Bulletin
-            summary: '{{fields.date}} — {{fields.title}}'
+            summary: '{{fields.date}} — {{fields.title | plain}}'
             collapsed: true
             fields:
               - label: Title
                 name: title
-                widget: string
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, align]
+                editor_components: [styled-text]
                 hint: For example "Sunday, 6 September 2026".
 
               - label: Date
@@ -155,8 +159,13 @@ collections:
             hint: Turn this off to remove the strip from the home page. The list below is kept, so turning it back on restores everything.
           - label: Title above the strip
             name: heading
-            widget: string
+            widget: richtext
+            format: html
+            modes: [rich_text]
+            buttons: [bold, italic, align]
+            editor_components: [styled-text]
             required: false
+            hint: Select some words to make them bold or italic. The alignment button centers the title. For colored or larger words, use the Color & size button.
           - label: Speed
             name: speed
             widget: select
@@ -262,8 +271,13 @@ collections:
             fields:
               - label: Small line above the title
                 name: eyebrow
-                widget: string
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, align]
+                editor_components: [styled-text]
                 required: false
+                hint: Select some words to make them bold or italic. The alignment button centers the title. For colored or larger words, use the Color & size button.
               - label: Page title
                 name: heading
                 widget: richtext
@@ -299,12 +313,22 @@ collections:
             fields:
               - label: Card title
                 name: heading
-                widget: string
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, align]
+                editor_components: [styled-text]
                 required: false
+                hint: Select some words to make them bold or italic. The alignment button centers the title. For colored or larger words, use the Color & size button.
               - label: Line under the title
                 name: subtitle
-                widget: string
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, align]
+                editor_components: [styled-text]
                 required: false
+                hint: Select some words to make them bold or italic. The alignment button centers the title. For colored or larger words, use the Color & size button.
               - label: Liturgy times
                 name: times
                 widget: list
@@ -323,8 +347,13 @@ collections:
             fields:
               - label: Small line above the title
                 name: eyebrow
-                widget: string
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, align]
+                editor_components: [styled-text]
                 required: false
+                hint: Select some words to make them bold or italic. The alignment button centers the title. For colored or larger words, use the Color & size button.
               - label: Section title
                 name: heading
                 widget: richtext
@@ -390,8 +419,13 @@ collections:
                 hint: Photo layouts need a photo; the banner is a dark strip with a button, like the support banner.
               - label: Small line above the title
                 name: eyebrow
-                widget: string
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, align]
+                editor_components: [styled-text]
                 required: false
+                hint: Select some words to make them bold or italic. The alignment button centers the title. For colored or larger words, use the Color & size button.
               - label: Title
                 name: heading
                 widget: richtext
@@ -436,7 +470,15 @@ collections:
             required: false
             collapsed: true
             fields:
-              - { label: Title, name: heading, widget: string, required: false }
+              - label: Title
+                name: heading
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, align]
+                editor_components: [styled-text]
+                required: false
+                hint: Select some words to make them bold or italic. The alignment button centers the title. For colored or larger words, use the Color & size button.
               - label: Text
                 name: text
                 widget: richtext
@@ -459,8 +501,24 @@ collections:
             required: false
             collapsed: true
             fields:
-              - { label: Small line above the title, name: eyebrow, widget: string, required: false }
-              - { label: Page title, name: heading, widget: string, required: false }
+              - label: Small line above the title
+                name: eyebrow
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, align]
+                editor_components: [styled-text]
+                required: false
+                hint: Select some words to make them bold or italic. The alignment button centers the title. For colored or larger words, use the Color & size button.
+              - label: Page title
+                name: heading
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, align]
+                editor_components: [styled-text]
+                required: false
+                hint: Select some words to make them bold or italic. The alignment button centers the title. For colored or larger words, use the Color & size button.
               - label: Welcome paragraph
                 name: lede
                 widget: richtext
@@ -476,7 +534,15 @@ collections:
             required: false
             collapsed: true
             fields:
-              - { label: Box title, name: heading, widget: string, required: false }
+              - label: Box title
+                name: heading
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, align]
+                editor_components: [styled-text]
+                required: false
+                hint: Select some words to make them bold or italic. The alignment button centers the title. For colored or larger words, use the Color & size button.
               - label: Address
                 name: address
                 widget: richtext
@@ -504,7 +570,15 @@ collections:
             required: false
             collapsed: true
             fields:
-              - { label: Box title, name: heading, widget: string, required: false }
+              - label: Box title
+                name: heading
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, align]
+                editor_components: [styled-text]
+                required: false
+                hint: Select some words to make them bold or italic. The alignment button centers the title. For colored or larger words, use the Color & size button.
               - { label: Pastor, name: pastor, widget: string, required: false }
               - label: Sacraments text
                 name: sacraments
@@ -530,7 +604,15 @@ collections:
             required: false
             collapsed: true
             fields:
-              - { label: Box title, name: heading, widget: string, required: false }
+              - label: Box title
+                name: heading
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, align]
+                editor_components: [styled-text]
+                required: false
+                hint: Select some words to make them bold or italic. The alignment button centers the title. For colored or larger words, use the Color & size button.
               - label: Text
                 name: text
                 widget: richtext
@@ -557,8 +639,24 @@ collections:
             required: false
             collapsed: true
             fields:
-              - { label: Small line above the title, name: eyebrow, widget: string, required: false }
-              - { label: Page title, name: heading, widget: string, required: false }
+              - label: Small line above the title
+                name: eyebrow
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, align]
+                editor_components: [styled-text]
+                required: false
+                hint: Select some words to make them bold or italic. The alignment button centers the title. For colored or larger words, use the Color & size button.
+              - label: Page title
+                name: heading
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, align]
+                editor_components: [styled-text]
+                required: false
+                hint: Select some words to make them bold or italic. The alignment button centers the title. For colored or larger words, use the Color & size button.
               - label: Welcome paragraph
                 name: lede
                 widget: richtext
@@ -574,7 +672,15 @@ collections:
             required: false
             collapsed: true
             fields:
-              - { label: Card title, name: heading, widget: string, required: false }
+              - label: Card title
+                name: heading
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, align]
+                editor_components: [styled-text]
+                required: false
+                hint: Select some words to make them bold or italic. The alignment button centers the title. For colored or larger words, use the Color & size button.
               - label: Text
                 name: text
                 widget: richtext
@@ -592,7 +698,15 @@ collections:
             required: false
             collapsed: true
             fields:
-              - { label: Card title, name: heading, widget: string, required: false }
+              - label: Card title
+                name: heading
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, align]
+                editor_components: [styled-text]
+                required: false
+                hint: Select some words to make them bold or italic. The alignment button centers the title. For colored or larger words, use the Color & size button.
               - label: Text
                 name: text
                 widget: richtext
@@ -616,8 +730,24 @@ collections:
             required: false
             collapsed: true
             fields:
-              - { label: Small line above the title, name: eyebrow, widget: string, required: false }
-              - { label: Page title, name: heading, widget: string, required: false }
+              - label: Small line above the title
+                name: eyebrow
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, align]
+                editor_components: [styled-text]
+                required: false
+                hint: Select some words to make them bold or italic. The alignment button centers the title. For colored or larger words, use the Color & size button.
+              - label: Page title
+                name: heading
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, align]
+                editor_components: [styled-text]
+                required: false
+                hint: Select some words to make them bold or italic. The alignment button centers the title. For colored or larger words, use the Color & size button.
               - label: Welcome paragraph
                 name: lede
                 widget: richtext
@@ -639,8 +769,24 @@ collections:
             required: false
             collapsed: true
             fields:
-              - { label: Small line above the title, name: eyebrow, widget: string, required: false }
-              - { label: Page title, name: heading, widget: string, required: false }
+              - label: Small line above the title
+                name: eyebrow
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, align]
+                editor_components: [styled-text]
+                required: false
+                hint: Select some words to make them bold or italic. The alignment button centers the title. For colored or larger words, use the Color & size button.
+              - label: Page title
+                name: heading
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, align]
+                editor_components: [styled-text]
+                required: false
+                hint: Select some words to make them bold or italic. The alignment button centers the title. For colored or larger words, use the Color & size button.
               - label: Welcome paragraph
                 name: lede
                 widget: richtext

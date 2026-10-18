@@ -43,9 +43,10 @@ redeploys the site.
 
 Prose fields (news bodies, section text, welcome paragraphs, the parish
 story, the contact and donate page text, the photo caption) are edited with
-the CMS's rich text editor and stored as HTML. Titles that the priest writes
-often (news titles, section titles, the home page title) use the same editor
-limited to bold, italic, and alignment. The pages never trust that HTML:
+the CMS's rich text editor and stored as HTML. Every title (page titles, the
+small lines above them, box and card titles, news and bulletin titles, the
+priests strip title) uses the same editor limited to bold, italic,
+alignment, and Color & size. The pages never trust that HTML:
 `richHtml()` in `app.js` rebuilds prose from an allowlist (paragraphs, line
 breaks, bold, italic, strikethrough, links, lists, h3/h4, block quotes, and
 the editor's text-align style) and `inlineRich()` reduces titles to bold,

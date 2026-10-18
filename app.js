@@ -343,7 +343,7 @@
     if (!s) return "";
     var layout = s.layout || "text";
     var alt = i % 2 === 0 ? " alt" : "";
-    var eyebrow = s.eyebrow ? '<span class="eyebrow">' + esc(s.eyebrow) + "</span>" : "";
+    var eyebrow = s.eyebrow ? titleTag("span", s.eyebrow).replace("<span", '<span class="eyebrow"') : "";
     var heading = s.heading ? titleTag("h2", s.heading) : "";
     var text = s.text ? '<div class="body rich">' + richHtml(s.text) + "</div>" : "";
     var img = s.image
@@ -546,7 +546,7 @@
         return (
           '<div class="bulletin-item fade-in">' + PDF_ICON +
           '<div class="b-meta"><span class="date">' + esc(prettyDate(b.date)) + "</span>" +
-          "<h3>" + esc(b.title) + "</h3></div>" +
+          titleTag("h3", b.title) + "</div>" +
           '<a class="btn small" href="' + esc(b.file) + '" target="_blank" rel="noopener">Open PDF</a>' +
           "</div>"
         );
@@ -611,7 +611,11 @@
         items = items.filter(function (p) { return p && p.name && !p.hidden; });
         if (!items.length) { el.hidden = true; return; }
         var heading = el.querySelector(".priests-heading");
-        if (heading && data.heading != null) heading.textContent = data.heading;
+        if (heading && data.heading != null) {
+          var h = inlineRich(data.heading);
+          heading.innerHTML = h.html;
+          heading.style.textAlign = h.align;
+        }
         var track = el.querySelector(".priests-track");
         track.innerHTML = items.map(priestHtml).join("");
         // Drop the loop copy from an earlier draw before making a new one.
