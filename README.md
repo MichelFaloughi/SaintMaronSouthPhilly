@@ -74,12 +74,16 @@ fallback if the JSON cannot be fetched, so keep it in sync when renaming a
 field. Field names in `admin/config.yml`, keys in `content/pages/*.json`,
 and `data-cms` attributes in the HTML must all agree.
 
-The "Design" entry gets a live preview: `admin/index.html` registers a
-preview template that draws a sample of the home page with the site's own
-`styles.css` and the chosen colors and fonts. It reads the same
-`theme-presets.js` the public pages use, so adding a palette or font pairing
-there updates the site, the preview, and (after adding the option to
-`admin/config.yml`) the editing form together.
+The CMS preview pane shows the real website page with the unsaved draft
+in it. `admin/index.html` maps each entry to its page (a news item to
+`news.html`, the Priests entry to the home page, and so on), loads that
+page with `?cms-preview` in an iframe, and sends the draft by
+`postMessage`. In that mode `app.js` accepts drafts only from the framing
+admin page on the same origin, holds its first draw until the draft
+arrives, and redraws in place on each edit. Drafts pass through the same
+escaping and sanitizing as published content. When adding a page or a
+content file, add it to `TARGETS` in `admin/index.html` and load it
+through `getJson()` in `app.js` so the preview covers it.
 
 ### Signing in to the CMS
 

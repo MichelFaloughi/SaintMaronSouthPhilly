@@ -17,15 +17,78 @@
   };
   var pending = {};
 
+  // ---------- CMS preview mode ----------
+  // The CMS preview pane loads the real page with ?cms-preview inside an
+  // iframe and sends the editor's unsaved draft by postMessage. The page then
+  // renders that draft with the same code as the live site, so the preview
+  // cannot drift from it. Only the admin page that framed us, on this same
+  // origin, may send drafts; anything else is ignored. Drafts go through the
+  // same esc()/richHtml() paths as published content.
+  var PREVIEW = /[?&]cms-preview\b/.test(location.search) && window.parent !== window;
+  var drafts = {};
+  var reruns = [];
+  var scrolledToDraft = false;
+
+  function getJson(path) {
+    if (PREVIEW && Object.prototype.hasOwnProperty.call(drafts, path)) {
+      return Promise.resolve(JSON.parse(JSON.stringify(drafts[path])));
+    }
+    return fetch(path, { cache: "no-cache" }).then(function (res) {
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return res.json();
+    });
+  }
+
+  // Remember how to redraw this page so a new draft can be applied in place,
+  // without reloading (which would lose the scroll position on every key).
+  // In preview mode the first draw also waits for the draft: drawing the
+  // published content first would race it and could paint over the draft.
+  // Returns true when the caller should hold off.
+  var draftReady = false;
+  function rememberRender(fn) {
+    if (!PREVIEW) return false;
+    reruns.push(fn);
+    return !draftReady;
+  }
+  function redrawAll() { return Promise.all(reruns.map(function (fn) { return fn(); })); }
+
+  if (PREVIEW) {
+    window.addEventListener("message", function (e) {
+      // The admin page may sit one level up or, if the CMS nests its preview
+      // pane in a frame of its own, at the top; either way it is this origin.
+      if (e.origin !== location.origin || (e.source !== window.parent && e.source !== window.top)) return;
+      var m = e.data;
+      if (!m || m.type !== "stm-preview" || typeof m.path !== "string" || !/^content\/[\w\/-]+\.json$/.test(m.path)) return;
+      drafts[m.path] = m.data;
+      pending = {};
+      draftReady = true;
+      redrawAll().then(function () {
+        // Jump to the part being edited once it is on the page, then leave
+        // scrolling to him.
+        var target = m.scrollTo && !scrolledToDraft && document.getElementById(m.scrollTo);
+        if (target && !target.hidden) {
+          scrolledToDraft = true;
+          target.scrollIntoView({ block: "center" });
+        }
+      });
+    });
+    // Links would leave the preview; keep the priest on the page he is editing.
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest("a[href]");
+      if (a) e.preventDefault();
+    }, true);
+    window.parent.postMessage({ type: "stm-preview-ready" }, location.origin);
+    // If no draft arrives, show the published content rather than nothing.
+    setTimeout(function () {
+      if (!draftReady) { draftReady = true; redrawAll(); }
+    }, 2000);
+  }
+
   function byDateDesc(a, b) { return (b.date || "").localeCompare(a.date || ""); }
 
   function load(kind) {
     if (!pending[kind]) {
-      pending[kind] = fetch(SOURCES[kind], { cache: "no-cache" })
-        .then(function (res) {
-          if (!res.ok) throw new Error("HTTP " + res.status);
-          return res.json();
-        })
+      pending[kind] = getJson(SOURCES[kind])
         .then(function (data) {
           var items = data && Array.isArray(data.items) ? data.items : [];
           return items.slice().sort(byDateDesc);
@@ -233,23 +296,23 @@
   var FONT_PAIRS = window.STM_THEME.FONT_PAIRS;
 
   function applyTheme() {
-    return fetch("content/theme.json", { cache: "no-cache" })
-      .then(function (res) {
-        if (!res.ok) throw new Error("HTTP " + res.status);
-        return res.json();
-      })
+    return getJson("content/theme.json")
       .then(function (t) {
         var root = document.documentElement.style;
+        // Clear any earlier choice first, so switching back to the default
+        // look (which sets nothing) works when the preview redraws.
+        ["--burgundy", "--burgundy-deep", "--display", "--body"].forEach(function (k) { root.removeProperty(k); });
         var palette = t && PALETTES[t.palette];
         if (palette) {
           Object.keys(palette).forEach(function (k) { root.setProperty(k, palette[k]); });
         }
         var pair = t && FONT_PAIRS[t.fonts];
         if (pair) {
-          var link = document.createElement("link");
+          var link = document.getElementById("theme-fonts") || document.createElement("link");
+          link.id = "theme-fonts";
           link.rel = "stylesheet";
           link.href = window.STM_THEME.fontsUrl(pair);
-          document.head.appendChild(link);
+          if (!link.parentNode) document.head.appendChild(link);
           root.setProperty("--display", pair.display);
           root.setProperty("--body", pair.body);
         }
@@ -323,11 +386,7 @@
   function renderPage(active) {
     var src = PAGES[active];
     if (!src) return Promise.resolve();
-    return fetch(src, { cache: "no-cache" })
-      .then(function (res) {
-        if (!res.ok) throw new Error("HTTP " + res.status);
-        return res.json();
-      })
+    return getJson(src)
       .then(function (data) {
         applyContent(data);
         renderSections(data.sections);
@@ -375,8 +434,8 @@
   ];
 
   function renderChrome(active) {
-    applyTheme();
-    renderPage(active);
+    var redraw = function () { return Promise.all([applyTheme(), renderPage(active)]); };
+    if (!rememberRender(redraw)) redraw();
 
     var header = document.getElementById("site-header");
     if (header) {
@@ -457,6 +516,10 @@
   function renderNews(id, limit) {
     var el = document.getElementById(id);
     if (!el) return Promise.resolve();
+    if (!el.hasAttribute("data-rendered")) {
+      el.setAttribute("data-rendered", "");
+      if (rememberRender(function () { return renderNews(id, limit); })) return Promise.resolve();
+    }
     return getNews().then(function (items) {
       if (limit) items = items.slice(0, limit);
       if (!items.length) {
@@ -470,6 +533,10 @@
   function renderBulletins(id) {
     var el = document.getElementById(id);
     if (!el) return Promise.resolve();
+    if (!el.hasAttribute("data-rendered")) {
+      el.setAttribute("data-rendered", "");
+      if (rememberRender(function () { return renderBulletins(id); })) return Promise.resolve();
+    }
     return getBulletins().then(function (items) {
       if (!items.length) {
         el.innerHTML = '<div class="empty-state">No bulletins are available right now. Check back soon.</div>';
@@ -520,7 +587,8 @@
   // the strip has a Pause / Play button (hover still pauses it too).
   function wirePriestsToggle(el) {
     var btn = el.querySelector(".priests-toggle");
-    if (!btn) return;
+    if (!btn || btn.hasAttribute("data-wired")) return;
+    btn.setAttribute("data-wired", "");
     btn.addEventListener("click", function () {
       var paused = el.classList.toggle("paused");
       btn.textContent = paused ? "Play" : "Pause";
@@ -530,22 +598,24 @@
   function renderPriests(id) {
     var el = document.getElementById(id);
     if (!el) return Promise.resolve();
-    return fetch("content/priests.json", { cache: "no-cache" })
-      .then(function (res) {
-        if (!res.ok) throw new Error("HTTP " + res.status);
-        return res.json();
-      })
+    if (!el.hasAttribute("data-rendered")) {
+      el.setAttribute("data-rendered", "");
+      if (rememberRender(function () { return renderPriests(id); })) return Promise.resolve();
+    }
+    return getJson("content/priests.json")
       .then(function (data) {
         // The parish office can switch the whole strip off in the CMS; a
         // missing setting counts as on.
-        if (!data || data.show === false) return;
+        if (!data || data.show === false) { el.hidden = true; return; }
         var items = Array.isArray(data.items) ? data.items : [];
         items = items.filter(function (p) { return p && p.name && !p.hidden; });
-        if (!items.length) return;
+        if (!items.length) { el.hidden = true; return; }
         var heading = el.querySelector(".priests-heading");
         if (heading && data.heading != null) heading.textContent = data.heading;
         var track = el.querySelector(".priests-track");
         track.innerHTML = items.map(priestHtml).join("");
+        // Drop the loop copy from an earlier draw before making a new one.
+        el.querySelectorAll(".priests-track[aria-hidden]").forEach(function (c) { c.parentNode.removeChild(c); });
         var copy = track.cloneNode(true);
         copy.setAttribute("aria-hidden", "true");
         track.parentNode.appendChild(copy);

@@ -75,82 +75,93 @@
       });
     })();
 
+    /* Live preview: the real website page, showing the unsaved draft.
+
+       Each CMS entry maps to the page that displays it. The preview pane
+       loads that page with ?cms-preview in an iframe and sends it the
+       draft by postMessage (same origin only); app.js then draws the page
+       from the draft with the same code as the live site, so what the
+       priest sees here is what visitors will see. Photos chosen but not
+       yet saved are passed as the temporary URLs the CMS holds for them. */
     (function () {
-      var PRESETS = window.STM_THEME;
-      var DEFAULT_FONTS = "https://fonts.googleapis.com/css2?family=Marcellus&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap";
+      var React = CMS.React;
+      var TARGETS = {
+        "news/items": { page: "news.html", path: "content/news.json" },
+        "bulletins/items": { page: "bulletin.html", path: "content/bulletins.json" },
+        "priests/items": { page: "index.html", path: "content/priests.json", scrollTo: "priests-band" },
+        "design/theme": { page: "index.html", path: "content/theme.json" },
+        "pages/home": { page: "index.html", path: "content/pages/home.json" },
+        "pages/contact": { page: "contact.html", path: "content/pages/contact.json" },
+        "pages/donate": { page: "donate.html", path: "content/pages/donate.json" },
+        "pages/news-page": { page: "news.html", path: "content/pages/news.json" },
+        "pages/bulletin-page": { page: "bulletin.html", path: "content/pages/bulletin.json" },
+      };
 
-      CMS.registerPreviewStyle("/styles.css", { collection: "design", file: "theme" });
-      CMS.registerPreviewStyle("/admin/preview.css", { collection: "design", file: "theme" });
-
-      function ThemePreview(props) {
-        var entry = props.entry;
-        var palette = PRESETS.PALETTES[entry.getIn(["data", "palette"])];
-        var pair = PRESETS.FONT_PAIRS[entry.getIn(["data", "fonts"])];
-
-        // CSS variables on the wrapper override the defaults from styles.css
-        // for everything inside it, exactly as app.js does on the live site.
-        var vars = "";
-        if (palette) {
-          Object.keys(palette).forEach(function (k) { vars += k + ":" + palette[k] + ";"; });
+      function withAssets(v, getAsset) {
+        if (Array.isArray(v)) return v.map(function (x) { return withAssets(x, getAsset); });
+        if (v && typeof v === "object") {
+          var o = {};
+          Object.keys(v).forEach(function (k) { o[k] = withAssets(v[k], getAsset); });
+          return o;
         }
-        if (pair) {
-          vars += "--display:" + pair.display + ";--body:" + pair.body + ";";
+        if (typeof v === "string" && /^(blob:|\/?(images|bulletins)\/)/.test(v)) {
+          var a = getAsset(v);
+          if (a && a.url) return a.url;
         }
-
-        return html`
-          <div class="theme-preview" style=${vars}>
-            <link rel="stylesheet" href=${DEFAULT_FONTS} />
-            ${pair ? html`<link rel="stylesheet" href=${PRESETS.fontsUrl(pair)} />` : null}
-            <p class="preview-note">A sample of the home page in the chosen colors and lettering. Save to apply it to the whole site.</p>
-            <header class="site-header">
-              <div class="wrap">
-                <div class="masthead">
-                  <img class="crest" src="/images/logo.png" alt="" />
-                  <div class="masthead-names">
-                    <span class="name">Saint Maron Church</span>
-                    <span class="place">Maronite Catholic · South Philadelphia</span>
-                  </div>
-                </div>
-                <nav class="nav" aria-label="Sample navigation">
-                  <a class="active">Home</a><a>Parish News</a><a>Weekly Bulletin</a><a>Contact</a><a>Donate</a>
-                </nav>
-              </div>
-            </header>
-            <section class="hero" data-key-path="palette" tabindex="0">
-              <div class="wrap hero-grid">
-                <div>
-                  <span class="eyebrow">Est. 1892 · Eparchy of Saint Maron of Brooklyn</span>
-                  <h1>Saint Maron<br />Maronite Catholic Church</h1>
-                  <p class="lede">One of the first Maronite parishes in North America, at home in South Philadelphia since 1892. All are welcome at the table of the Lord.</p>
-                  <div class="hero-actions">
-                    <span class="btn primary">This Week's Bulletin</span>
-                    <span class="btn ghost-light">Plan Your Visit</span>
-                  </div>
-                </div>
-                <aside class="mass-card">
-                  <h3>Divine Liturgy</h3>
-                  <p class="sub">Celebrated in English, Arabic, and Syriac</p>
-                  <dl>
-                    <dt>Saturday Vigil</dt><dd>4:00 PM</dd>
-                    <dt>Sunday</dt><dd>11:00 AM</dd>
-                  </dl>
-                </aside>
-              </div>
-            </section>
-            <section class="section" data-key-path="fonts" tabindex="0">
-              <div class="wrap">
-                <span class="eyebrow">Our Parish</span>
-                <h2>A Maronite home in the heart of the city</h2>
-                <hr class="rule" />
-                <p>Founded by Lebanese immigrants at the close of the nineteenth century, Saint Maron has been a spiritual home for generations of families in South Philadelphia. We worship in the ancient Maronite tradition, with a liturgy whose roots reach back to the earliest Christian communities of Antioch.</p>
-                <p style="margin-top:12px"><em>Whether your family has been here for a hundred years or you are stepping inside for the first time, you belong here.</em> <strong>Mass times, news, and the weekly bulletin</strong> are always a tap away.</p>
-              </div>
-            </section>
-          </div>
-        `;
+        return v;
       }
 
-      CMS.registerPreviewTemplate("theme", ThemePreview);
+      function makePreview(file) {
+        return function SitePreview(props) {
+          var t = TARGETS[props.entry.get("collection") + "/" + file];
+          var frame = React.useRef(null);
+          var latest = React.useRef(null);
+          var timer = React.useRef(0);
+          var host = props.window || window;
+          if (t) {
+            latest.current = {
+              type: "stm-preview",
+              path: t.path,
+              data: withAssets(props.entry.get("data").toJS(), props.getAsset),
+              scrollTo: t.scrollTo || "",
+            };
+          }
+          function send() {
+            var w = frame.current && frame.current.contentWindow;
+            if (w && latest.current) w.postMessage(latest.current, location.origin);
+          }
+          // The page says when it is ready; answer with the current draft.
+          React.useEffect(function () {
+            function onMessage(e) {
+              if (!frame.current || e.source !== frame.current.contentWindow) return;
+              if (e.origin !== location.origin || !e.data || e.data.type !== "stm-preview-ready") return;
+              send();
+            }
+            host.addEventListener("message", onMessage);
+            return function () { host.removeEventListener("message", onMessage); clearTimeout(timer.current); };
+          }, [host]);
+          // Every edit: send the new draft after a short pause in typing.
+          React.useEffect(function () {
+            clearTimeout(timer.current);
+            timer.current = setTimeout(send, 250);
+          });
+          if (!t) return null;
+          return html`<iframe
+            ref=${frame}
+            src=${"/" + t.page + "?cms-preview"}
+            title="Preview of the website page"
+            style=${{ position: "fixed", top: 0, left: 0, width: "100%", height: "100%", border: 0, display: "block", background: "#f4f3ee" }}
+          />`;
+        };
+      }
+
+      Object.keys(TARGETS).forEach(function (key) {
+        var file = key.split("/")[1];
+        if (file !== "items") CMS.registerPreviewTemplate(file, makePreview(file));
+      });
+      // News, bulletins, and priests all name their file "items"; one
+      // template serves all three and picks the page by collection.
+      CMS.registerPreviewTemplate("items", makePreview("items"));
     })();
   </script>
 </head>
