@@ -1,8 +1,8 @@
 {
   "hero": {
     "eyebrow": "Est. 1892 · Eparchy of Saint Maron of Brooklyn",
-    "heading": "Saint Maron Church\nMaronite Catholic",
-    "lede": "One of the first Maronite parishes in North America, Saint Maron Church has faithfully served the faithful in South Philadelphia since 1892. For generations, our parish has been a home of prayer, worship, and communion, preserving and sharing the rich spiritual heritage of the Maronite Catholic Church.\n\nOn Saturday, December 2, 2017, we gave thanks to God as we celebrated the 125th anniversary of our parish. We remember with gratitude all those who, through their faith, sacrifice, and devotion, helped build the parish we cherish today.\n\nRooted in the faith of our fathers and strengthened by the grace of God, Saint Maron continues its mission of proclaiming the Gospel and celebrating the Sacred Mysteries. All are welcome at the Table of the Lord.",
+    "heading": "<p>Saint Maron Church<br>Maronite Catholic</p>",
+    "lede": "<p>One of the first Maronite parishes in North America, Saint Maron Church has faithfully served the faithful in South Philadelphia since 1892. For generations, our parish has been a home of prayer, worship, and communion, preserving and sharing the rich spiritual heritage of the Maronite Catholic Church.</p><p>On Saturday, December 2, 2017, we gave thanks to God as we celebrated the 125th anniversary of our parish. We remember with gratitude all those who, through their faith, sacrifice, and devotion, helped build the parish we cherish today.</p><p>Rooted in the faith of our fathers and strengthened by the grace of God, Saint Maron continues its mission of proclaiming the Gospel and celebrating the Sacred Mysteries. All are welcome at the Table of the Lord.</p>",
     "bulletinButton": "This Week's Bulletin",
     "visitButton": "Plan Your Visit"
   },
@@ -30,7 +30,7 @@
     "photo": "/images/saint Jude 2026 - schedule - final parishioners_page-0001.jpg",
     "photoAlt": "",
     "caption": "",
-    "story": "This year, during our Saint Jude Novena, we will reflect on the seven virtues. These virtues are good habits that help us choose what is right, grow in holiness, and become more Christ-like in our daily lives. They shape the way we think, act, and respond to God and to one another. May this novena be a time of prayer, reflection, and spiritual growth for us all.",
+    "story": "<p>This year, during our Saint Jude Novena, we will reflect on the seven virtues. These virtues are good habits that help us choose what is right, grow in holiness, and become more Christ-like in our daily lives. They shape the way we think, act, and respond to God and to one another. May this novena be a time of prayer, reflection, and spiritual growth for us all.</p>",
     "storyMore": ""
   },
   "sections": [
@@ -69,7 +69,7 @@
   ],
   "callout": {
     "heading": "Support the mission of our parish",
-    "text": "Your generosity sustains our liturgies, our building, and our outreach to the community.",
+    "text": "<p>Your generosity sustains our liturgies, our building, and our outreach to the community.</p>",
     "button": "Ways to Give"
   }
 }

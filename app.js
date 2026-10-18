@@ -82,20 +82,56 @@
     return cleanNodes(doc.body);
   }
 
+  // Titles and captions: the same editor with bold, italic, and alignment
+  // only. Block tags are flattened to line breaks so the result fits inside
+  // an existing heading or span; the alignment of the first block is
+  // returned separately so the caller can put it on the host element.
+  var INLINE_TAGS = { strong: 1, b: 1, em: 1, i: 1, s: 1, a: 1, br: 1 };
+
+  function inlineRich(v) {
+    var s = String(v == null ? "" : v);
+    if (!/<[a-z][\s\S]*>/i.test(s)) return { html: textHtml(s), align: "" };
+    var doc = new DOMParser().parseFromString(s, "text/html");
+    var first = doc.body.querySelector("p, h1, h2, h3, h4, h5, h6, li, blockquote");
+    var align = first && first.style ? first.style.textAlign : "";
+    if (!/^(left|center|right|justify)$/.test(align)) align = "";
+    var html = cleanNodes(doc.body, INLINE_TAGS, "<br>").replace(/^(<br>)+|(<br>)+$/g, "");
+    return { html: html, align: align };
+  }
+
+  function titleTag(tag, v) {
+    var r = inlineRich(v);
+    return "<" + tag + (r.align ? ' style="text-align:' + r.align + '"' : "") + ">" + r.html + "</" + tag + ">";
+  }
+
+  function plainText(v) {
+    var s = String(v == null ? "" : v);
+    if (!/<[a-z][\s\S]*>/i.test(s)) return s;
+    return new DOMParser().parseFromString(s, "text/html").body.textContent || "";
+  }
+
   function paragraphs(s) {
     s = String(s || "").trim();
     if (!s) return "";
     return s.split(/\n\s*\n/).map(function (p) { return "<p>" + textHtml(p) + "</p>"; }).join("");
   }
 
-  function cleanNodes(parent) {
+  // `allowed` is the tag allowlist; `blockSep` (optional) replaces block
+  // tags that are not allowed, so paragraphs become line breaks in a title.
+  function cleanNodes(parent, allowed, blockSep) {
+    allowed = allowed || RICH_TAGS;
     var out = "";
     parent.childNodes.forEach(function (n) {
       if (n.nodeType === 3) { out += esc(n.nodeValue); return; }
       if (n.nodeType !== 1) return;
       var tag = n.tagName.toLowerCase();
       if (tag === "script" || tag === "style" || tag === "template") return;
-      if (!RICH_TAGS[tag]) { out += cleanNodes(n); return; }
+      if (!allowed[tag]) {
+        var inner = cleanNodes(n, allowed, blockSep);
+        if (blockSep && /^(p|div|h[1-6]|li|blockquote|ul|ol)$/.test(tag) && inner) inner += blockSep;
+        out += inner;
+        return;
+      }
       if (tag === "b") tag = "strong";
       if (tag === "i") tag = "em";
       if (tag === "br") { out += "<br>"; return; }
@@ -104,15 +140,15 @@
         var raw = String(n.getAttribute("href") || "").trim();
         // Only web, mail, and phone links; anything with another scheme
         // (javascript:, data:, ...) is shown as plain text.
-        if (/^[a-z][\w+.-]*:/i.test(raw) && !/^(https?|mailto|tel):/i.test(raw)) { out += cleanNodes(n); return; }
+        if (/^[a-z][\w+.-]*:/i.test(raw) && !/^(https?|mailto|tel):/i.test(raw)) { out += cleanNodes(n, allowed, blockSep); return; }
         var href = safeUrl(raw);
-        if (!href) { out += cleanNodes(n); return; }
+        if (!href) { out += cleanNodes(n, allowed, blockSep); return; }
         attrs += ' href="' + esc(href) + '"';
         if (/^(https?:)?\/\//i.test(href)) attrs += ' target="_blank" rel="noopener"';
       }
       var align = n.style ? n.style.textAlign : "";
       if (/^(left|center|right|justify)$/.test(align)) attrs += ' style="text-align:' + align + '"';
-      out += "<" + tag + attrs + ">" + cleanNodes(n) + "</" + tag + ">";
+      out += "<" + tag + attrs + ">" + cleanNodes(n, allowed, blockSep) + "</" + tag + ">";
     });
     return out;
   }
@@ -133,7 +169,12 @@
   }
 
   function applyContent(data) {
-    eachCms(data, "data-cms", function (el, v) { el.innerHTML = textHtml(v); });
+    eachCms(data, "data-cms", function (el, v) {
+      if (el.classList.contains("rich")) { el.innerHTML = richHtml(v); return; }
+      var r = inlineRich(v);
+      el.innerHTML = r.html;
+      el.style.textAlign = r.align;
+    });
     eachCms(data, "data-cms-href", function (el, v) { if (String(v).trim()) el.href = safeUrl(v); });
     eachCms(data, "data-cms-src", function (el, v) { if (String(v).trim()) el.src = v; });
     eachCms(data, "data-cms-alt", function (el, v) { el.alt = v; });
@@ -222,7 +263,7 @@
     var layout = s.layout || "text";
     var alt = i % 2 === 0 ? " alt" : "";
     var eyebrow = s.eyebrow ? '<span class="eyebrow">' + esc(s.eyebrow) + "</span>" : "";
-    var heading = s.heading ? "<h2>" + esc(s.heading) + "</h2>" : "";
+    var heading = s.heading ? titleTag("h2", s.heading) : "";
     var text = s.text ? '<div class="body rich">' + richHtml(s.text) + "</div>" : "";
     var img = s.image
       ? '<figure class="parish-photo"><img src="' + esc(s.image) + '" alt="' + esc(s.imageAlt || "") + '"></figure>'
@@ -373,7 +414,7 @@
   // ---------- Renderers ----------
   function newsCard(n) {
     var img = n.image
-      ? '<img src="' + esc(n.image) + '" alt="' + esc(n.imageAlt || n.title) + '">'
+      ? '<img src="' + esc(n.image) + '" alt="' + esc(n.imageAlt || plainText(n.title)) + '">'
       : window.STM_ART[n.art] || window.STM_ART.window;
     var link = "";
     if (n.link && n.link.url) {
@@ -388,7 +429,7 @@
       '<div class="card-img">' + img + "</div>" +
       '<div class="card-body">' +
       '<span class="date">' + esc(prettyDate(n.date)) + "</span>" +
-      "<h3>" + esc(n.title) + "</h3>" +
+      titleTag("h3", n.title) +
       '<div class="rich">' + richHtml(n.body) + "</div>" +
       link +
       "</div></article>"

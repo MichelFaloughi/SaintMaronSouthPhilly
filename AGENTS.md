@@ -28,10 +28,13 @@ simple editing surfaces, legible pages, nothing to maintain.
 - **All user-visible strings that pass through JS go through `esc()`** in
   `app.js`. CMS content is untrusted input: the editing accounts could be
   compromised, and news bodies, captions, and URLs are typed by humans.
-  URLs additionally go through `safeUrl()`. The two rich text fields (news
-  body, home section text) arrive as HTML from the CMS editor and go through
-  `richHtml()` instead, which rebuilds them from a short tag allowlist. Any
-  new rich text field must use it; never put CMS HTML in `innerHTML` raw.
+  URLs additionally go through `safeUrl()`. Rich text fields arrive as HTML
+  from the CMS editor and go through `richHtml()` (prose: paragraphs, lists,
+  links) or `inlineRich()` (titles and captions: bold, italic, alignment
+  only) instead; both rebuild the HTML from a short tag allowlist. A page
+  element with class `rich` on its `data-cms` attribute gets the prose
+  treatment, any other `data-cms` element the inline one. Any new rich text
+  field must use one of them; never put CMS HTML in `innerHTML` raw.
 - **No em dashes** in anything public-facing: page copy, commit messages,
   comments, docs. Use commas, colons, parentheses, or separate sentences.
 - **No AI attribution** ("Generated with...", "Co-Authored-By: Claude") in

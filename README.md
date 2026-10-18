@@ -41,13 +41,19 @@ redeploys the site.
 | `content/pages/*.json` | One file per page (home, contact, donate, news, bulletin) holding that page's editable text |
 | `content/theme.json` | `palette` and `fonts`, chosen from the presets in `theme-presets.js` (the "Design" entry in the CMS) |
 
-News bodies and home-page section text are edited with the CMS's rich text
-editor and stored as HTML. The pages never trust that HTML: `richHtml()` in
-`app.js` rebuilds it from an allowlist (paragraphs, line breaks, bold,
-italic, strikethrough, links, lists, h3/h4, block quotes, and the editor's
-text-align style), drops everything else, and runs links through `safeUrl()`.
-A body with no tags at all is treated as plain text, so older entries and
-hand-written JSON still work.
+Prose fields (news bodies, section text, welcome paragraphs, the parish
+story, the contact and donate page text, the photo caption) are edited with
+the CMS's rich text editor and stored as HTML. Titles that the priest writes
+often (news titles, section titles, the home page title) use the same editor
+limited to bold, italic, and alignment. The pages never trust that HTML:
+`richHtml()` in `app.js` rebuilds prose from an allowlist (paragraphs, line
+breaks, bold, italic, strikethrough, links, lists, h3/h4, block quotes, and
+the editor's text-align style) and `inlineRich()` reduces titles to bold,
+italic, and line breaks plus one alignment on the heading itself. Everything
+else is dropped, and links go through `safeUrl()`. In the HTML pages, a
+`data-cms` element with class `rich` receives prose; any other receives the
+inline form. A value with no tags at all is treated as plain text, so
+hand-written JSON still works.
 
 Newest date sorts to the top of news and bulletins. Editing the JSON by hand
 and pushing works too — the CMS is a convenience, not a requirement.

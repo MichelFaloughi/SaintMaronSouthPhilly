@@ -36,12 +36,17 @@ collections:
             widget: list
             required: false
             label_singular: News Item
-            summary: '{{fields.date}} — {{fields.title}}'
+            summary: '{{fields.date}} — {{fields.title | plain}}'
             collapsed: true
             fields:
               - label: Title
                 name: title
-                widget: string
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, align]
+                editor_components: []
+                hint: Select some words to make them bold or italic. The alignment button centers the title.
 
               - label: Date
                 name: date
@@ -238,12 +243,20 @@ collections:
                 required: false
               - label: Page title
                 name: heading
-                widget: text
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, align]
+                editor_components: []
                 required: false
-                hint: Line breaks are kept, so you can split the title over two lines.
+                hint: Select some words to make them bold or italic. The alignment button centers the title. Press Enter to split it over two lines.
               - label: Welcome paragraph
                 name: lede
-                widget: text
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                editor_components: []
                 required: false
               - label: First button
                 name: bulletinButton
@@ -291,8 +304,13 @@ collections:
                 required: false
               - label: Section title
                 name: heading
-                widget: string
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, align]
+                editor_components: []
                 required: false
+                hint: Select some words to make them bold or italic. The alignment button centers the title.
               - label: Photo
                 name: photo
                 widget: image
@@ -304,23 +322,35 @@ collections:
                 hint: Describes the photo for people using a screen reader.
               - label: Caption under the photo
                 name: caption
-                widget: string
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                editor_components: []
                 required: false
               - label: Parish story
                 name: story
-                widget: text
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                editor_components: []
                 required: false
                 hint: The history of the parish, in your own words.
               - label: Closing line
                 name: storyMore
-                widget: text
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                editor_components: []
                 required: false
           - label: Extra Sections
             name: sections
             widget: list
             required: false
             label_singular: Section
-            summary: '{{fields.heading}}'
+            summary: '{{fields.heading | plain}}'
             collapsed: true
             hint: Add as many as you like and drag to reorder. They appear between "Our Parish" and the support banner.
             fields:
@@ -379,7 +409,15 @@ collections:
             collapsed: true
             fields:
               - { label: Title, name: heading, widget: string, required: false }
-              - { label: Text, name: text, widget: text, required: false }
+              - label: Text
+                name: text
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                editor_components: []
+                required: false
+                hint: Select some words to make them bold, italic, or a link. The alignment button centers or justifies a paragraph.
               - { label: Button, name: button, widget: string, hint: The button that opens the Donate page., required: false }
 
       - name: contact
@@ -395,7 +433,15 @@ collections:
             fields:
               - { label: Small line above the title, name: eyebrow, widget: string, required: false }
               - { label: Page title, name: heading, widget: string, required: false }
-              - { label: Welcome paragraph, name: lede, widget: text, required: false }
+              - label: Welcome paragraph
+                name: lede
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                editor_components: []
+                required: false
+                hint: Select some words to make them bold, italic, or a link. The alignment button centers or justifies a paragraph.
           - label: Parish Office
             name: office
             widget: object
@@ -405,9 +451,13 @@ collections:
               - { label: Box title, name: heading, widget: string, required: false }
               - label: Address
                 name: address
-                widget: text
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                editor_components: []
                 required: false
-                hint: Line breaks are kept.
+                hint: Select some words to make them bold, italic, or a link. The alignment button centers or justifies a paragraph.
               - label: Phone
                 name: phone
                 widget: string
@@ -428,8 +478,24 @@ collections:
             fields:
               - { label: Box title, name: heading, widget: string, required: false }
               - { label: Pastor, name: pastor, widget: string, required: false }
-              - { label: Sacraments text, name: sacraments, widget: text, required: false }
-              - { label: New to the parish text, name: newHere, widget: text, required: false }
+              - label: Sacraments text
+                name: sacraments
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                editor_components: []
+                required: false
+                hint: Select some words to make them bold, italic, or a link. The alignment button centers or justifies a paragraph.
+              - label: New to the parish text
+                name: newHere
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                editor_components: []
+                required: false
+                hint: Select some words to make them bold, italic, or a link. The alignment button centers or justifies a paragraph.
           - label: Finding Us
             name: finding
             widget: object
@@ -437,7 +503,15 @@ collections:
             collapsed: true
             fields:
               - { label: Box title, name: heading, widget: string, required: false }
-              - { label: Text, name: text, widget: text, required: false }
+              - label: Text
+                name: text
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                editor_components: []
+                required: false
+                hint: Select some words to make them bold, italic, or a link. The alignment button centers or justifies a paragraph.
               - label: Map address
                 name: mapAddress
                 widget: string
@@ -457,7 +531,15 @@ collections:
             fields:
               - { label: Small line above the title, name: eyebrow, widget: string, required: false }
               - { label: Page title, name: heading, widget: string, required: false }
-              - { label: Welcome paragraph, name: lede, widget: text, required: false }
+              - label: Welcome paragraph
+                name: lede
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                editor_components: []
+                required: false
+                hint: Select some words to make them bold, italic, or a link. The alignment button centers or justifies a paragraph.
           - label: Zeffy Card
             name: zeffy
             widget: object
@@ -465,7 +547,15 @@ collections:
             collapsed: true
             fields:
               - { label: Card title, name: heading, widget: string, required: false }
-              - { label: Text, name: text, widget: text, required: false }
+              - label: Text
+                name: text
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                editor_components: []
+                required: false
+                hint: Select some words to make them bold, italic, or a link. The alignment button centers or justifies a paragraph.
               - { label: Button, name: button, widget: string, required: false }
               - { label: Donation link, name: url, widget: string, hint: 'Paste the full address, starting with https://', required: false }
           - label: Venmo Card
@@ -475,7 +565,15 @@ collections:
             collapsed: true
             fields:
               - { label: Card title, name: heading, widget: string, required: false }
-              - { label: Text, name: text, widget: text, required: false }
+              - label: Text
+                name: text
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                editor_components: []
+                required: false
+                hint: Select some words to make them bold, italic, or a link. The alignment button centers or justifies a paragraph.
               - { label: Button, name: button, widget: string, required: false }
               - { label: Donation link, name: url, widget: string, hint: 'Paste the full address, starting with https://', required: false }
 
@@ -492,7 +590,15 @@ collections:
             fields:
               - { label: Small line above the title, name: eyebrow, widget: string, required: false }
               - { label: Page title, name: heading, widget: string, required: false }
-              - { label: Welcome paragraph, name: lede, widget: text, required: false }
+              - label: Welcome paragraph
+                name: lede
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                editor_components: []
+                required: false
+                hint: Select some words to make them bold, italic, or a link. The alignment button centers or justifies a paragraph.
 
       - name: bulletin-page
         label: Bulletin Page
@@ -507,9 +613,21 @@ collections:
             fields:
               - { label: Small line above the title, name: eyebrow, widget: string, required: false }
               - { label: Page title, name: heading, widget: string, required: false }
-              - { label: Welcome paragraph, name: lede, widget: text, required: false }
+              - label: Welcome paragraph
+                name: lede
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                editor_components: []
+                required: false
+                hint: Select some words to make them bold, italic, or a link. The alignment button centers or justifies a paragraph.
           - label: Older bulletins note
             name: olderNote
-            widget: text
+            widget: richtext
+            format: html
+            modes: [rich_text]
+            buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+            editor_components: []
             required: false
             hint: The italic line under the list of bulletins.
