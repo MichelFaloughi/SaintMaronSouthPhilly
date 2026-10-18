@@ -132,6 +132,54 @@ collections:
                 public_folder: /bulletins
                 hint: Upload the bulletin PDF.
 
+  # The strip of priests on the home page, oldest first.
+  - name: priests
+    label: Priests
+    icon: person
+    files:
+      - name: items
+        label: Priests
+        file: content/priests.json
+        description: The slow-moving strip of every priest who has served the parish, shown on the home page.
+        fields:
+          - label: Title above the strip
+            name: heading
+            widget: string
+            required: false
+          - label: Priests
+            name: items
+            widget: list
+            required: false
+            label_singular: Priest
+            summary: '{{fields.name}} ({{fields.years}})'
+            collapsed: true
+            hint: Listed oldest first. Drag to reorder.
+            fields:
+              - label: Name
+                name: name
+                widget: string
+                hint: With the title, for example "Msgr. Sharbel Lischaa".
+
+              - label: Years
+                name: years
+                widget: string
+                required: false
+                hint: For example "1974-2010" or "2020-Present".
+
+              - label: Role
+                name: role
+                widget: string
+                required: false
+                hint: For example "Pastor", "Assistant Pastor", or "Administrator".
+
+              - label: Photo
+                name: image
+                widget: image
+                required: false
+                media_folder: /images/priests
+                public_folder: /images/priests
+                hint: A head-and-shoulders photo works best. If left empty, a small cross is shown instead.
+
   # Colors and lettering, chosen from presets defined in app.js (PALETTES and
   # FONT_PAIRS). The values here must match the keys there.
   - name: design
