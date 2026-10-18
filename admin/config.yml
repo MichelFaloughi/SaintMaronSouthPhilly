@@ -147,16 +147,32 @@ collections:
         file: content/priests.json
         description: The slow-moving strip of every priest who has served the parish, shown on the home page.
         fields:
+          - label: Show the strip on the home page
+            name: show
+            widget: boolean
+            required: false
+            default: true
+            hint: Turn this off to remove the strip from the home page. The list below is kept, so turning it back on restores everything.
           - label: Title above the strip
             name: heading
             widget: string
             required: false
+          - label: Speed
+            name: speed
+            widget: select
+            required: false
+            default: normal
+            options:
+              - { label: Slow, value: slow }
+              - { label: Normal, value: normal }
+              - { label: Fast, value: fast }
+            hint: How quickly the portraits drift past. Visitors can always pause it.
           - label: Priests
             name: items
             widget: list
             required: false
             label_singular: Priest
-            summary: '{{fields.name}} ({{fields.years}})'
+            summary: "{{fields.hidden | ternary('Hidden: ', '')}}{{fields.name}} ({{fields.years}})"
             collapsed: true
             hint: Listed oldest first. Drag to reorder.
             fields:
@@ -184,6 +200,13 @@ collections:
                 media_folder: /images/priests
                 public_folder: /images/priests
                 hint: A head-and-shoulders photo works best. If left empty, a small cross is shown instead.
+
+              - label: Hide from the strip
+                name: hidden
+                widget: boolean
+                required: false
+                default: false
+                hint: Keeps this priest in the list without showing him on the site, for example while a photo or dates are being checked.
 
   # Colors and lettering, chosen from presets defined in app.js (PALETTES and
   # FONT_PAIRS). The values here must match the keys there.

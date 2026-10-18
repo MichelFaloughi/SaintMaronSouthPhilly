@@ -495,6 +495,20 @@
     );
   }
 
+  // Seconds each portrait takes to cross, by the CMS "Speed" setting.
+  var PRIEST_SPEEDS = { slow: 6, normal: 4, fast: 2.5 };
+
+  // Moving content needs a way to stop it that works without a mouse, so
+  // the strip has a Pause / Play button (hover still pauses it too).
+  function wirePriestsToggle(el) {
+    var btn = el.querySelector(".priests-toggle");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      var paused = el.classList.toggle("paused");
+      btn.textContent = paused ? "Play" : "Pause";
+    });
+  }
+
   function renderPriests(id) {
     var el = document.getElementById(id);
     if (!el) return Promise.resolve();
@@ -504,8 +518,11 @@
         return res.json();
       })
       .then(function (data) {
-        var items = data && Array.isArray(data.items) ? data.items : [];
-        items = items.filter(function (p) { return p && p.name; });
+        // The parish office can switch the whole strip off in the CMS; a
+        // missing setting counts as on.
+        if (!data || data.show === false) return;
+        var items = Array.isArray(data.items) ? data.items : [];
+        items = items.filter(function (p) { return p && p.name && !p.hidden; });
         if (!items.length) return;
         var heading = el.querySelector(".priests-heading");
         if (heading && data.heading != null) heading.textContent = data.heading;
@@ -516,7 +533,9 @@
         track.parentNode.appendChild(copy);
         // A few seconds per portrait keeps the pace steady however many
         // priests are listed.
-        el.style.setProperty("--priests-duration", items.length * 4 + "s");
+        var perPriest = PRIEST_SPEEDS[data.speed] || PRIEST_SPEEDS.normal;
+        el.style.setProperty("--priests-duration", items.length * perPriest + "s");
+        wirePriestsToggle(el);
         el.hidden = false;
       })
       .catch(function (err) {

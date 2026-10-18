@@ -1,4 +1,6 @@
 {
+  "show": true,
+  "speed": "normal",
   "heading": "Priests who have served Saint Maron",
   "items": [
     { "name": "Chorbishop Stephen Corkemaz", "years": "1895-1907", "role": "Pastor", "image": "/images/priests/01-corkemaz.png" },
