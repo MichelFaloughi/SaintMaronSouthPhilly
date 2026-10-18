@@ -48,7 +48,8 @@ small lines above them, box and card titles, news and bulletin titles, the
 priests strip title) uses the same editor limited to bold, italic,
 alignment, and Color & size. The pages never trust that HTML:
 `richHtml()` in `app.js` rebuilds prose from an allowlist (paragraphs, line
-breaks, bold, italic, strikethrough, links, lists, h3/h4, block quotes, and
+breaks, bold, italic, strikethrough, links, lists, headings (a Heading 1 is kept at
+that size but marked up as `h2`, so each page keeps one `h1`), block quotes, and
 the editor's text-align style) and `inlineRich()` reduces titles to bold,
 italic, and line breaks plus one alignment on the heading itself. Everything
 else is dropped, and links go through `safeUrl()`.

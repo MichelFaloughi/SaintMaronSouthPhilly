@@ -134,7 +134,7 @@
   // links get the same safeUrl() treatment as every other URL, and the only
   // style kept is the editor's own text-align. Anything else (scripts,
   // event handlers, images, iframes, colors) is dropped, with its text kept.
-  var RICH_TAGS = { p: 1, br: 1, strong: 1, b: 1, em: 1, i: 1, s: 1, a: 1, ul: 1, ol: 1, li: 1, h3: 1, h4: 1, blockquote: 1, span: 1 };
+  var RICH_TAGS = { p: 1, br: 1, strong: 1, b: 1, em: 1, i: 1, s: 1, a: 1, ul: 1, ol: 1, li: 1, h1: 1, h2: 1, h3: 1, h4: 1, blockquote: 1, span: 1 };
 
   // Colored or sized words come from the CMS "Color & size" component as
   // <span data-color="blue" data-size="large">. Only names listed in
@@ -209,6 +209,11 @@
         return;
       }
       if (tag === "b") tag = "strong";
+      // Each page already has its title as its one <h1>, which screen readers
+      // and search engines rely on; a Heading 1 typed into text keeps the
+      // Heading 1 size but is marked up as a level-2 heading.
+      var extraClass = "";
+      if (tag === "h1") { tag = "h2"; extraClass = "rich-h1"; }
       if (tag === "i") tag = "em";
       if (tag === "br") { out += "<br>"; return; }
       if (tag === "span") {
@@ -228,6 +233,7 @@
         if (/^(https?:)?\/\//i.test(href)) attrs += ' target="_blank" rel="noopener"';
       }
       var align = n.style ? n.style.textAlign : "";
+      if (extraClass) attrs += ' class="' + extraClass + '"';
       if (/^(left|center|right|justify)$/.test(align)) attrs += ' style="text-align:' + align + '"';
       out += "<" + tag + attrs + ">" + cleanNodes(n, allowed, blockSep) + "</" + tag + ">";
     });

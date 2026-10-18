@@ -62,7 +62,7 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-one, heading-two, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 hint: Select some words to make them bold, italic, or a link. The ¶ menu adds a heading, subheading, quote, or list. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
 
@@ -292,7 +292,7 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-one, heading-two, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
               - label: First button
@@ -377,7 +377,7 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-one, heading-two, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
               - label: Parish story
@@ -385,7 +385,7 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-one, heading-two, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
                 hint: The history of the parish, in your own words.
@@ -394,7 +394,7 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-one, heading-two, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
           - label: Extra Sections
@@ -440,7 +440,7 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-one, heading-two, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
                 hint: Select some words to make them bold, italic, or a link. The ¶ menu adds a heading, subheading, quote, or list. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
@@ -484,7 +484,7 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-one, heading-two, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
                 hint: Select some words to make them bold, italic, or a link. The ¶ menu adds a heading, subheading, quote, or list. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
@@ -524,7 +524,7 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-one, heading-two, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
                 hint: Select some words to make them bold, italic, or a link. The ¶ menu adds a heading, subheading, quote, or list. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
@@ -548,7 +548,7 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-one, heading-two, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
                 hint: Select some words to make them bold, italic, or a link. The ¶ menu adds a heading, subheading, quote, or list. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
@@ -585,7 +585,7 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-one, heading-two, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
                 hint: Select some words to make them bold, italic, or a link. The ¶ menu adds a heading, subheading, quote, or list. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
@@ -594,7 +594,7 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-one, heading-two, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
                 hint: Select some words to make them bold, italic, or a link. The ¶ menu adds a heading, subheading, quote, or list. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
@@ -618,7 +618,7 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-one, heading-two, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
                 hint: Select some words to make them bold, italic, or a link. The ¶ menu adds a heading, subheading, quote, or list. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
@@ -662,7 +662,7 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-one, heading-two, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
                 hint: Select some words to make them bold, italic, or a link. The ¶ menu adds a heading, subheading, quote, or list. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
@@ -686,7 +686,7 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-one, heading-two, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
                 hint: Select some words to make them bold, italic, or a link. The ¶ menu adds a heading, subheading, quote, or list. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
@@ -712,7 +712,7 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-one, heading-two, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
                 hint: Select some words to make them bold, italic, or a link. The ¶ menu adds a heading, subheading, quote, or list. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
@@ -753,7 +753,7 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-one, heading-two, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
                 hint: Select some words to make them bold, italic, or a link. The ¶ menu adds a heading, subheading, quote, or list. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
@@ -792,7 +792,7 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-one, heading-two, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
                 hint: Select some words to make them bold, italic, or a link. The ¶ menu adds a heading, subheading, quote, or list. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
@@ -801,7 +801,7 @@ collections:
             widget: richtext
             format: html
             modes: [rich_text]
-            buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
+            buttons: [bold, italic, link, heading-one, heading-two, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
             editor_components: [styled-text]
             required: false
             hint: The italic line under the list of bulletins.

@@ -273,7 +273,8 @@ h3 { font-size: 1.25rem; }
 .rich > * + * { margin-top: 0.7em; }
 .rich ul, .rich ol { padding-left: 1.3em; }
 .rich li + li { margin-top: 0.25em; }
-.rich h3, .rich h4 { margin-top: 1em; }
+.rich h2, .rich h3, .rich h4 { margin-top: 1em; }
+.rich .rich-h1 { font-size: clamp(2rem, 4.5vw, 3.1rem); letter-spacing: 0.01em; }
 .rich h4 { font-family: var(--display); font-weight: 400; font-size: 1.05rem; line-height: 1.2; color: var(--burgundy); }
 .rich blockquote { border-left: 3px solid var(--gold); padding-left: 14px; color: var(--muted); font-style: italic; }
 .rich a { color: var(--burgundy); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 2px; }
@@ -289,7 +290,7 @@ h3 { font-size: 1.25rem; }
 .tone-red { color: #a3261c; }
 .tone-gray { color: #565a4f; }
 /* Headings and quotes inside text on the dark hero and support banner. */
-.hero .rich h3, .hero .rich h4, .callout .rich h3, .callout .rich h4 { color: var(--stone); }
+.hero .rich h2, .hero .rich h3, .hero .rich h4, .callout .rich h2, .callout .rich h3, .callout .rich h4 { color: var(--stone); }
 .hero .rich blockquote, .callout .rich blockquote { color: #e6d3d6; border-left-color: var(--gold-soft); }
 .hero .tone-theme, .callout .tone-theme { color: var(--stone); }
 .hero .tone-gold, .callout .tone-gold { color: var(--gold-soft); }
