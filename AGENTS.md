@@ -35,6 +35,8 @@ simple editing surfaces, legible pages, nothing to maintain.
   element with class `rich` on its `data-cms` attribute gets the prose
   treatment, any other `data-cms` element the inline one. Any new rich text
   field must use one of them; never put CMS HTML in `innerHTML` raw.
+  Colored and sized words reach the page only as class names picked from
+  `text-styles.js`, never as inline styles.
 - **No em dashes** in anything public-facing: page copy, commit messages,
   comments, docs. Use commas, colons, parentheses, or separate sentences.
 - **No AI attribution** ("Generated with...", "Co-Authored-By: Claude") in

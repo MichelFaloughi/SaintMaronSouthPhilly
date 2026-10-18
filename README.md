@@ -50,7 +50,14 @@ limited to bold, italic, and alignment. The pages never trust that HTML:
 breaks, bold, italic, strikethrough, links, lists, h3/h4, block quotes, and
 the editor's text-align style) and `inlineRich()` reduces titles to bold,
 italic, and line breaks plus one alignment on the heading itself. Everything
-else is dropped, and links go through `safeUrl()`. In the HTML pages, a
+else is dropped, and links go through `safeUrl()`.
+
+Every rich text field also has a **Color & size** button. Sveltia's editor
+cannot style a selection, so it inserts an inline chip: a few words with a
+color and a size chosen from the preset lists in `text-styles.js`, saved as
+`<span data-color data-size>`. The sanitizer turns only those listed names
+into `.tone-*` and `.size-*` classes, defined in `styles.css` with lighter
+twins for the dark hero and banner. To add a color, add it to both files. In the HTML pages, a
 `data-cms` element with class `rich` receives prose; any other receives the
 inline form. A value with no tags at all is treated as plain text, so
 hand-written JSON still works.

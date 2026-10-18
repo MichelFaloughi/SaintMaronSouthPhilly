@@ -71,7 +71,20 @@
   // links get the same safeUrl() treatment as every other URL, and the only
   // style kept is the editor's own text-align. Anything else (scripts,
   // event handlers, images, iframes, colors) is dropped, with its text kept.
-  var RICH_TAGS = { p: 1, br: 1, strong: 1, b: 1, em: 1, i: 1, s: 1, a: 1, ul: 1, ol: 1, li: 1, h3: 1, h4: 1, blockquote: 1 };
+  var RICH_TAGS = { p: 1, br: 1, strong: 1, b: 1, em: 1, i: 1, s: 1, a: 1, ul: 1, ol: 1, li: 1, h3: 1, h4: 1, blockquote: 1, span: 1 };
+
+  // Colored or sized words come from the CMS "Color & size" component as
+  // <span data-color="blue" data-size="large">. Only names listed in
+  // text-styles.js become classes; anything else leaves plain text.
+  function styleClasses(n) {
+    var known = window.STM_TEXT_STYLES || { colors: [], sizes: [] };
+    function pick(list, v) {
+      return v && list.some(function (o) { return o.value === v; }) ? v : "";
+    }
+    var color = pick(known.colors, n.getAttribute("data-color"));
+    var size = pick(known.sizes, n.getAttribute("data-size"));
+    return (color ? "tone-" + color : "") + (color && size ? " " : "") + (size ? "size-" + size : "");
+  }
 
   function richHtml(v) {
     var s = String(v == null ? "" : v);
@@ -86,7 +99,7 @@
   // only. Block tags are flattened to line breaks so the result fits inside
   // an existing heading or span; the alignment of the first block is
   // returned separately so the caller can put it on the host element.
-  var INLINE_TAGS = { strong: 1, b: 1, em: 1, i: 1, s: 1, a: 1, br: 1 };
+  var INLINE_TAGS = { strong: 1, b: 1, em: 1, i: 1, s: 1, a: 1, br: 1, span: 1 };
 
   function inlineRich(v) {
     var s = String(v == null ? "" : v);
@@ -135,6 +148,11 @@
       if (tag === "b") tag = "strong";
       if (tag === "i") tag = "em";
       if (tag === "br") { out += "<br>"; return; }
+      if (tag === "span") {
+        var cls = styleClasses(n);
+        out += cls ? '<span class="' + cls + '">' + cleanNodes(n, allowed, blockSep) + "</span>" : cleanNodes(n, allowed, blockSep);
+        return;
+      }
       var attrs = "";
       if (tag === "a") {
         var raw = String(n.getAttribute("href") || "").trim();

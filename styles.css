@@ -279,6 +279,25 @@ h3 { font-size: 1.25rem; }
 .rich a { color: var(--burgundy); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 2px; }
 .rich a:hover { text-decoration-color: var(--burgundy); }
 
+/* Colored and sized words from the CMS "Color & size" button. The names
+   are listed in text-styles.js; each color is dark enough to read on the
+   stone and card backgrounds, with a lighter twin for the dark banners. */
+.tone-theme { color: var(--burgundy); }
+.tone-gold { color: #765a14; }
+.tone-blue { color: #1f4e8c; }
+.tone-green { color: #2e6b3a; }
+.tone-red { color: #a3261c; }
+.tone-gray { color: #565a4f; }
+.hero .tone-theme, .callout .tone-theme { color: var(--stone); }
+.hero .tone-gold, .callout .tone-gold { color: var(--gold-soft); }
+.hero .tone-blue, .callout .tone-blue { color: #a9c6ee; }
+.hero .tone-green, .callout .tone-green { color: #a9d8b0; }
+.hero .tone-red, .callout .tone-red { color: #f2b0a8; }
+.hero .tone-gray, .callout .tone-gray { color: #d5ccc9; }
+.size-small { font-size: 0.85em; }
+.size-large { font-size: 1.25em; }
+.size-xlarge { font-size: 1.6em; line-height: 1.2; }
+
 /* ---------- Sections ---------- */
 .section { padding: 64px 0; }
 .section.alt { background: var(--stone-2); }

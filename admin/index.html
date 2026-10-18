@@ -9,6 +9,7 @@
   <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
   <!-- The same color schemes and font pairings the public pages use. -->
   <script src="/theme-presets.js"></script>
+  <script src="/text-styles.js"></script>
   <script>
     /* Live preview for the "Design > Colors & Fonts" entry.
 
@@ -27,6 +28,52 @@
       var doc = new DOMParser().parseFromString(String(value == null ? "" : value), "text/html");
       return (doc.body.textContent || "").replace(/\s+/g, " ").trim();
     });
+
+    /* "Color & size": a few words in a chosen color and size, offered in
+       every rich text field. Sveltia's editor cannot style a selection, so
+       this is an inline chip: the priest types the words in a small dialog
+       and picks from the preset lists in text-styles.js. It is saved as
+       <span data-color data-size>, which app.js turns into classes. */
+    (function () {
+      var S = window.STM_TEXT_STYLES;
+      function opts(list) { return list.map(function (o) { return { label: o.label, value: o.value }; }); }
+      function find(list, v) { return list.filter(function (o) { return o.value === v; })[0]; }
+      function build(values, forPreview) {
+        var span = document.createElement("span");
+        span.setAttribute("data-color", values.color || "");
+        span.setAttribute("data-size", values.size || "");
+        span.textContent = values.text || "";
+        if (forPreview) {
+          var c = find(S.colors, values.color), z = find(S.sizes, values.size);
+          if (c && c.swatch) span.style.color = c.swatch;
+          if (z && z.em) span.style.fontSize = z.em + "em";
+        }
+        return span;
+      }
+      CMS.registerEditorComponent({
+        id: "styled-text",
+        label: "Color & size",
+        icon: "format_color_text",
+        trigger: "button",
+        mode: "dialog",
+        fields: [
+          { name: "text", label: "Words", widget: "string", hint: "Type the words to color or resize." },
+          { name: "color", label: "Color", widget: "select", required: false, default: "", options: opts(S.colors) },
+          { name: "size", label: "Size", widget: "select", required: false, default: "", options: opts(S.sizes) },
+        ],
+        // Markdown form, required by the API though these fields save HTML.
+        pattern: /\[styled color="(?<color>\w*)" size="(?<size>\w*)"\](?<text>[^\[\]\n]*)\[\/styled\]/,
+        toBlock: function (v) {
+          return '[styled color="' + (v.color || "") + '" size="' + (v.size || "") + '"]' + String(v.text || "").replace(/[\[\]\n]/g, "") + "[/styled]";
+        },
+        htmlSelector: "span[data-color]",
+        fromBlockHTML: function (el) {
+          return { text: el.textContent || "", color: el.getAttribute("data-color") || "", size: el.getAttribute("data-size") || "" };
+        },
+        toBlockHTML: function (v) { return build(v, false); },
+        toPreview: function (v) { return build(v, true); },
+      });
+    })();
 
     (function () {
       var PRESETS = window.STM_THEME;
