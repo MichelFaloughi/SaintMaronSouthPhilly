@@ -62,9 +62,9 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, heading-three, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
-                hint: Select some words to make them bold, italic, or a link. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
+                hint: Select some words to make them bold, italic, or a link. The ¶ menu adds a heading, subheading, quote, or list. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
 
               - label: Photo
                 name: image
@@ -278,7 +278,7 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
               - label: First button
@@ -348,7 +348,7 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
               - label: Parish story
@@ -356,7 +356,7 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
                 hint: The history of the parish, in your own words.
@@ -365,7 +365,7 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
           - label: Extra Sections
@@ -394,17 +394,22 @@ collections:
                 required: false
               - label: Title
                 name: heading
-                widget: string
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, align]
+                editor_components: [styled-text]
                 required: false
+                hint: Select some words to make them bold or italic. The alignment button centers the title. For colored or larger words, use the Color & size button.
               - label: Text
                 name: text
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
-                hint: Select some words to make them bold, italic, or a link. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
+                hint: Select some words to make them bold, italic, or a link. The ¶ menu adds a heading, subheading, quote, or list. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
               - label: Photo
                 name: image
                 widget: image
@@ -437,10 +442,10 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
-                hint: Select some words to make them bold, italic, or a link. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
+                hint: Select some words to make them bold, italic, or a link. The ¶ menu adds a heading, subheading, quote, or list. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
               - { label: Button, name: button, widget: string, hint: The button that opens the Donate page., required: false }
 
       - name: contact
@@ -461,10 +466,10 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
-                hint: Select some words to make them bold, italic, or a link. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
+                hint: Select some words to make them bold, italic, or a link. The ¶ menu adds a heading, subheading, quote, or list. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
           - label: Parish Office
             name: office
             widget: object
@@ -477,10 +482,10 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
-                hint: Select some words to make them bold, italic, or a link. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
+                hint: Select some words to make them bold, italic, or a link. The ¶ menu adds a heading, subheading, quote, or list. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
               - label: Phone
                 name: phone
                 widget: string
@@ -506,19 +511,19 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
-                hint: Select some words to make them bold, italic, or a link. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
+                hint: Select some words to make them bold, italic, or a link. The ¶ menu adds a heading, subheading, quote, or list. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
               - label: New to the parish text
                 name: newHere
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
-                hint: Select some words to make them bold, italic, or a link. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
+                hint: Select some words to make them bold, italic, or a link. The ¶ menu adds a heading, subheading, quote, or list. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
           - label: Finding Us
             name: finding
             widget: object
@@ -531,10 +536,10 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
-                hint: Select some words to make them bold, italic, or a link. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
+                hint: Select some words to make them bold, italic, or a link. The ¶ menu adds a heading, subheading, quote, or list. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
               - label: Map address
                 name: mapAddress
                 widget: string
@@ -559,10 +564,10 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
-                hint: Select some words to make them bold, italic, or a link. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
+                hint: Select some words to make them bold, italic, or a link. The ¶ menu adds a heading, subheading, quote, or list. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
           - label: Zeffy Card
             name: zeffy
             widget: object
@@ -575,10 +580,10 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
-                hint: Select some words to make them bold, italic, or a link. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
+                hint: Select some words to make them bold, italic, or a link. The ¶ menu adds a heading, subheading, quote, or list. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
               - { label: Button, name: button, widget: string, required: false }
               - { label: Donation link, name: url, widget: string, hint: 'Paste the full address, starting with https://', required: false }
           - label: Venmo Card
@@ -593,10 +598,10 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
-                hint: Select some words to make them bold, italic, or a link. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
+                hint: Select some words to make them bold, italic, or a link. The ¶ menu adds a heading, subheading, quote, or list. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
               - { label: Button, name: button, widget: string, required: false }
               - { label: Donation link, name: url, widget: string, hint: 'Paste the full address, starting with https://', required: false }
 
@@ -618,10 +623,10 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
-                hint: Select some words to make them bold, italic, or a link. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
+                hint: Select some words to make them bold, italic, or a link. The ¶ menu adds a heading, subheading, quote, or list. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
 
       - name: bulletin-page
         label: Bulletin Page
@@ -641,16 +646,16 @@ collections:
                 widget: richtext
                 format: html
                 modes: [rich_text]
-                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
                 editor_components: [styled-text]
                 required: false
-                hint: Select some words to make them bold, italic, or a link. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
+                hint: Select some words to make them bold, italic, or a link. The ¶ menu adds a heading, subheading, quote, or list. The alignment button centers or justifies a paragraph. For colored or larger words, use the Color & size button.
           - label: Older bulletins note
             name: olderNote
             widget: richtext
             format: html
             modes: [rich_text]
-            buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+            buttons: [bold, italic, link, heading-three, heading-four, quote, bulleted-list, numbered-list, align]
             editor_components: [styled-text]
             required: false
             hint: The italic line under the list of bulletins.
