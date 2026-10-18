@@ -1,0 +1,23 @@
+{
+  "heading": "Priests who have served Saint Maron",
+  "items": [
+    { "name": "Chorbishop Stephen Corkemaz", "years": "1895-1907", "role": "Pastor", "image": "/images/priests/01-corkemaz.png" },
+    { "name": "Chorbishop Joseph Yazbek", "years": "1907-1925", "role": "Pastor", "image": "/images/priests/02-yazbek-joseph.png" },
+    { "name": "Rev. Joseph Keirallah Yazbek", "years": "1913-1915", "role": "Assistant Pastor", "image": "/images/priests/03-yazbek-joseph-keirallah.png" },
+    { "name": "Rev. Anthony Peter Yazbek", "years": "1920-1924, 1934-1936", "role": "Assistant Pastor, then Pastor", "image": "" },
+    { "name": "Chorbishop Louis Zouain", "years": "1925-1931", "role": "Pastor", "image": "/images/priests/04-zouain-louis.png" },
+    { "name": "Chorbishop George Zouain", "years": "1927-1930", "role": "Assistant Pastor", "image": "/images/priests/05-zouain-george.png" },
+    { "name": "Rev. Emmanuel El-Khoury Hanna", "years": "1931-1934", "role": "Pastor", "image": "" },
+    { "name": "Rev. John Nehme", "years": "1936-1948", "role": "Pastor", "image": "/images/priests/08-nehme-john.png" },
+    { "name": "Chorbishop Louis Risha", "years": "1948-1968", "role": "Pastor", "image": "/images/priests/09-risha-louis.png" },
+    { "name": "Msgr. Joseph Bistany", "years": "1968-1969", "role": "Administrator", "image": "/images/priests/10-bistany-joseph.png" },
+    { "name": "Chorbishop Joseph John Shaheen", "years": "1969-1974", "role": "Pastor", "image": "/images/priests/11-shaheen-joseph-john.png" },
+    { "name": "Msgr. Sharbel Lischaa", "years": "1974-2010", "role": "Pastor", "image": "/images/priests/12-lischaa-sharbel.png" },
+    { "name": "Bishop Gregory J. Mansour", "years": "1983", "role": "Assistant Pastor", "image": "/images/priests/13-mansour-gregory.png" },
+    { "name": "Rev. Michael Marrone", "years": "2009-2011", "role": "Administrator", "image": "/images/priests/14-marrone-michael.png" },
+    { "name": "Rev. Vincent W. Farhat", "years": "2011-2019", "role": "Pastor", "image": "/images/priests/15-farhat-vincent.png" },
+    { "name": "Rev. El-Badaoui Habib, MLM", "years": "2019-2020", "role": "Pastor", "image": "/images/priests/16-habib-el-badaoui.png" },
+    { "name": "Rev. Samir Chebli", "years": "2020", "role": "Administrator", "image": "/images/priests/17-chebli-samir.png" },
+    { "name": "Rev. Andrawos (Fadi) El-Tabchi", "years": "2020-Present", "role": "Pastor", "image": "/images/priests/18-el-tabchi-andrawos.png" }
+  ]
+}

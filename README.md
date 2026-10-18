@@ -37,6 +37,7 @@ redeploys the site.
 | --- | --- |
 | `content/news.json` | `{ "items": [...] }` — `title`, `date` (`YYYY-MM-DD`), `body` (HTML from the rich text editor: paragraphs, bold, italic, links, lists, a small heading, alignment); optional `image` / `imageAlt`, `art` (`window`, `cedar`, `candles`, `bells`), and `link` (`{ label, url }`) for a button |
 | `content/bulletins.json` | `{ "items": [...] }` — `title`, `date`, `file` (path to the PDF in `bulletins/`) |
+| `content/priests.json` | `{ "heading", "items": [...] }`: `name`, `years`, `role`, optional `image`. The scrolling strip of priests on the home page, in list order (oldest first). Portraits live in `images/priests/` |
 | `content/pages/*.json` | One file per page (home, contact, donate, news, bulletin) holding that page's editable text |
 | `content/theme.json` | `palette` and `fonts`, chosen from the presets in `theme-presets.js` (the "Design" entry in the CMS) |
 

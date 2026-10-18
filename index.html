@@ -34,6 +34,17 @@
     </div>
   </section>
 
+  <!-- Every priest who has served the parish, scrolling slowly. Filled from
+       content/priests.json by app.js; stays hidden if that cannot load. -->
+  <section id="priests-band" class="priests" aria-label="Priests who have served Saint Maron" hidden>
+    <div class="wrap">
+      <span class="eyebrow priests-heading">Priests who have served Saint Maron</span>
+    </div>
+    <div class="priests-viewport">
+      <ul class="priests-track"></ul>
+    </div>
+  </section>
+
   <section class="section">
     <div class="wrap parish-intro">
       <figure class="parish-photo reveal">
@@ -72,6 +83,7 @@
   <script src="app.js"></script>
   <script>
     STM.renderChrome("index.html");
+    STM.renderPriests("priests-band");
   </script>
 </body>
 </html>

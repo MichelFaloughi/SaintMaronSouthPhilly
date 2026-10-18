@@ -428,6 +428,61 @@
     });
   }
 
+  // ---------- Priests band ----------
+  // A slow, endless strip of every priest who has served the parish, from
+  // content/priests.json (the "Priests" entry in the CMS). The list is
+  // rendered twice so the CSS animation can slide one full copy and loop
+  // seamlessly; the second copy is hidden from assistive technology. The
+  // whole section stays hidden until there is something to show, so a
+  // failed fetch leaves no empty strip behind.
+  var PRIEST_PLACEHOLDER =
+    '<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+    '<rect width="80" height="80" style="fill:var(--burgundy, #6b2233)"/>' +
+    '<path d="M40 18 V62 M22 36 H58" stroke="#d3b563" stroke-width="4" stroke-linecap="round"/>' +
+    '</svg>';
+
+  function priestHtml(p) {
+    var alt = p.name ? "Portrait of " + p.name : "";
+    var img = p.image
+      ? '<img src="' + esc(p.image) + '" alt="' + esc(alt) + '" width="80" height="80">'
+      : PRIEST_PLACEHOLDER;
+    var years = p.years ? '<span class="priest-years">' + esc(p.years) + "</span>" : "";
+    var role = p.role ? '<span class="priest-role">' + esc(p.role) + "</span>" : "";
+    return (
+      '<li class="priest"><span class="priest-photo">' + img + "</span>" +
+      '<span class="priest-name">' + esc(p.name) + "</span>" + years + role + "</li>"
+    );
+  }
+
+  function renderPriests(id) {
+    var el = document.getElementById(id);
+    if (!el) return Promise.resolve();
+    return fetch("content/priests.json", { cache: "no-cache" })
+      .then(function (res) {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        return res.json();
+      })
+      .then(function (data) {
+        var items = data && Array.isArray(data.items) ? data.items : [];
+        items = items.filter(function (p) { return p && p.name; });
+        if (!items.length) return;
+        var heading = el.querySelector(".priests-heading");
+        if (heading && data.heading != null) heading.textContent = data.heading;
+        var track = el.querySelector(".priests-track");
+        track.innerHTML = items.map(priestHtml).join("");
+        var copy = track.cloneNode(true);
+        copy.setAttribute("aria-hidden", "true");
+        track.parentNode.appendChild(copy);
+        // A few seconds per portrait keeps the pace steady however many
+        // priests are listed.
+        el.style.setProperty("--priests-duration", items.length * 4 + "s");
+        el.hidden = false;
+      })
+      .catch(function (err) {
+        console.warn("Could not load priests: " + err.message);
+      });
+  }
+
   // ---------- Lightbox ----------
   // Clicking a content photo (the parish photo, CMS section photos, news
   // card images) opens it enlarged in an overlay. The click handler is
@@ -495,6 +550,7 @@
     renderPage: renderPage,
     renderNews: renderNews,
     renderBulletins: renderBulletins,
+    renderPriests: renderPriests,
     getNews: getNews,
     getBulletins: getBulletins,
     prettyDate: prettyDate,

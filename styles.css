@@ -196,6 +196,75 @@ h3 { font-size: 1.25rem; }
 .mass-card dd { text-align: right; }
 .mass-card .note { margin-top: 14px; font-size: 0.85rem; color: var(--muted); font-style: italic; }
 
+/* ---------- Priests band (home) ---------- */
+/* An endless strip of the priests who have served the parish. Two copies
+   of the list sit side by side; sliding the pair by half its width lands
+   exactly where it started, so the loop is seamless. app.js sets
+   --priests-duration from the number of priests. */
+.priests {
+  background: var(--stone-2);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 26px 0 22px;
+  overflow: hidden;
+}
+.priests .eyebrow { text-align: center; margin-bottom: 1.1rem; }
+.priests-viewport {
+  display: flex;
+  width: max-content;
+  animation: priestsSlide var(--priests-duration, 72s) linear infinite;
+}
+.priests-viewport:hover { animation-play-state: paused; }
+.priests-track {
+  display: flex;
+  list-style: none;
+  flex: none;
+}
+.priest {
+  width: 150px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 10px;
+  line-height: 1.25;
+}
+.priest-photo {
+  display: block;
+  width: 84px;
+  height: 100px;
+  margin-bottom: 10px;
+  border-radius: 42px 42px 6px 6px; /* the site's arch, in miniature */
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--burgundy);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+.priest-photo img, .priest-photo svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+.priest-name {
+  font-family: var(--display);
+  font-size: 0.82rem;
+  color: var(--burgundy);
+}
+.priest-years {
+  font-family: var(--display);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  margin-top: 3px;
+}
+.priest-role { font-size: 0.72rem; font-style: italic; color: var(--muted); margin-top: 1px; }
+@keyframes priestsSlide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 /* ---------- Rich text from the CMS ---------- */
 /* News bodies and section text: paragraphs, lists, links, small headings.
    Alignment arrives as an inline style set by the editor. */
@@ -464,6 +533,10 @@ h3 { font-size: 1.25rem; }
   .fade-in { animation: none; }
   .lightbox { transition: none; }
   html { scroll-behavior: auto; }
+  /* The priests strip stands still and scrolls by hand instead; the
+     duplicate copy that only exists for the loop is dropped. */
+  .priests-viewport { animation: none; width: auto; overflow-x: auto; padding-bottom: 8px; }
+  .priests-track[aria-hidden] { display: none; }
 }
 
 /* ---------- Responsive ---------- */
