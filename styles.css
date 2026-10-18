@@ -196,6 +196,18 @@ h3 { font-size: 1.25rem; }
 .mass-card dd { text-align: right; }
 .mass-card .note { margin-top: 14px; font-size: 0.85rem; color: var(--muted); font-style: italic; }
 
+/* ---------- Rich text from the CMS ---------- */
+/* News bodies and section text: paragraphs, lists, links, small headings.
+   Alignment arrives as an inline style set by the editor. */
+.rich > * + * { margin-top: 0.7em; }
+.rich ul, .rich ol { padding-left: 1.3em; }
+.rich li + li { margin-top: 0.25em; }
+.rich h3, .rich h4 { margin-top: 1em; }
+.rich h4 { font-size: 1.05rem; }
+.rich blockquote { border-left: 3px solid var(--gold); padding-left: 14px; color: var(--muted); font-style: italic; }
+.rich a { color: var(--burgundy); text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 2px; }
+.rich a:hover { text-decoration-color: var(--burgundy); }
+
 /* ---------- Sections ---------- */
 .section { padding: 64px 0; }
 .section.alt { background: var(--stone-2); }

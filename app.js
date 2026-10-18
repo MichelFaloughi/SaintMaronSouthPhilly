@@ -64,6 +64,59 @@
 
   function textHtml(v) { return esc(v).replace(/\n/g, "<br>"); }
 
+  // ---------- Rich text ----------
+  // News bodies and home-page section text come from the CMS's rich text
+  // editor as HTML. That HTML is untrusted like everything else from the
+  // CMS, so it is rebuilt here from an allowlist: only these tags survive,
+  // links get the same safeUrl() treatment as every other URL, and the only
+  // style kept is the editor's own text-align. Anything else (scripts,
+  // event handlers, images, iframes, colors) is dropped, with its text kept.
+  var RICH_TAGS = { p: 1, br: 1, strong: 1, b: 1, em: 1, i: 1, s: 1, a: 1, ul: 1, ol: 1, li: 1, h3: 1, h4: 1, blockquote: 1 };
+
+  function richHtml(v) {
+    var s = String(v == null ? "" : v);
+    // Entries written before the editor existed are plain text with line
+    // breaks; they are shown as paragraphs so the layout matches.
+    if (!/<[a-z][\s\S]*>/i.test(s)) return paragraphs(s);
+    var doc = new DOMParser().parseFromString(s, "text/html");
+    return cleanNodes(doc.body);
+  }
+
+  function paragraphs(s) {
+    s = String(s || "").trim();
+    if (!s) return "";
+    return s.split(/\n\s*\n/).map(function (p) { return "<p>" + textHtml(p) + "</p>"; }).join("");
+  }
+
+  function cleanNodes(parent) {
+    var out = "";
+    parent.childNodes.forEach(function (n) {
+      if (n.nodeType === 3) { out += esc(n.nodeValue); return; }
+      if (n.nodeType !== 1) return;
+      var tag = n.tagName.toLowerCase();
+      if (tag === "script" || tag === "style" || tag === "template") return;
+      if (!RICH_TAGS[tag]) { out += cleanNodes(n); return; }
+      if (tag === "b") tag = "strong";
+      if (tag === "i") tag = "em";
+      if (tag === "br") { out += "<br>"; return; }
+      var attrs = "";
+      if (tag === "a") {
+        var raw = String(n.getAttribute("href") || "").trim();
+        // Only web, mail, and phone links; anything with another scheme
+        // (javascript:, data:, ...) is shown as plain text.
+        if (/^[a-z][\w+.-]*:/i.test(raw) && !/^(https?|mailto|tel):/i.test(raw)) { out += cleanNodes(n); return; }
+        var href = safeUrl(raw);
+        if (!href) { out += cleanNodes(n); return; }
+        attrs += ' href="' + esc(href) + '"';
+        if (/^(https?:)?\/\//i.test(href)) attrs += ' target="_blank" rel="noopener"';
+      }
+      var align = n.style ? n.style.textAlign : "";
+      if (/^(left|center|right|justify)$/.test(align)) attrs += ' style="text-align:' + align + '"';
+      out += "<" + tag + attrs + ">" + cleanNodes(n) + "</" + tag + ">";
+    });
+    return out;
+  }
+
   function phoneDigits(v) {
     var d = String(v || "").replace(/\D/g, "");
     return d.length === 10 ? "1" + d : d;
@@ -170,7 +223,7 @@
     var alt = i % 2 === 0 ? " alt" : "";
     var eyebrow = s.eyebrow ? '<span class="eyebrow">' + esc(s.eyebrow) + "</span>" : "";
     var heading = s.heading ? "<h2>" + esc(s.heading) + "</h2>" : "";
-    var text = s.text ? '<p class="body">' + textHtml(s.text) + "</p>" : "";
+    var text = s.text ? '<div class="body rich">' + richHtml(s.text) + "</div>" : "";
     var img = s.image
       ? '<figure class="parish-photo"><img src="' + esc(s.image) + '" alt="' + esc(s.imageAlt || "") + '"></figure>'
       : "";
@@ -178,7 +231,7 @@
     if (layout === "banner") {
       return (
         '<section class="section"><div class="wrap"><div class="callout">' +
-        "<div>" + heading + (s.text ? "<p>" + textHtml(s.text) + "</p>" : "") + "</div>" +
+        "<div>" + heading + (s.text ? '<div class="rich">' + richHtml(s.text) + "</div>" : "") + "</div>" +
         sectionButtons(s.buttons, false) +
         "</div></div></section>"
       );
@@ -336,7 +389,7 @@
       '<div class="card-body">' +
       '<span class="date">' + esc(prettyDate(n.date)) + "</span>" +
       "<h3>" + esc(n.title) + "</h3>" +
-      "<p>" + textHtml(n.body) + "</p>" +
+      '<div class="rich">' + richHtml(n.body) + "</div>" +
       link +
       "</div></article>"
     );

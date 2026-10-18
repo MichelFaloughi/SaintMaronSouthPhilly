@@ -54,8 +54,12 @@ collections:
 
               - label: Text
                 name: body
-                widget: text
-                hint: A short paragraph. Plain text — no formatting.
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, link, heading-three, bulleted-list, numbered-list, align]
+                editor_components: []
+                hint: Select some words to make them bold, italic, or a link. The alignment button centers or justifies a paragraph.
 
               - label: Photo
                 name: image
@@ -293,8 +297,13 @@ collections:
                 required: false
               - label: Text
                 name: text
-                widget: text
+                widget: richtext
+                format: html
+                modes: [rich_text]
+                buttons: [bold, italic, link, bulleted-list, numbered-list, align]
+                editor_components: []
                 required: false
+                hint: Select some words to make them bold, italic, or a link. The alignment button centers or justifies a paragraph.
               - label: Photo
                 name: image
                 widget: image

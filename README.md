@@ -35,10 +35,18 @@ redeploys the site.
 
 | File | Contents |
 | --- | --- |
-| `content/news.json` | `{ "items": [...] }` — `title`, `date` (`YYYY-MM-DD`), `body`; optional `image` / `imageAlt`, `art` (`window`, `cedar`, `candles`, `bells`), and `link` (`{ label, url }`) for a button |
+| `content/news.json` | `{ "items": [...] }` — `title`, `date` (`YYYY-MM-DD`), `body` (HTML from the rich text editor: paragraphs, bold, italic, links, lists, a small heading, alignment); optional `image` / `imageAlt`, `art` (`window`, `cedar`, `candles`, `bells`), and `link` (`{ label, url }`) for a button |
 | `content/bulletins.json` | `{ "items": [...] }` — `title`, `date`, `file` (path to the PDF in `bulletins/`) |
 | `content/pages/*.json` | One file per page (home, contact, donate, news, bulletin) holding that page's editable text |
 | `content/theme.json` | `palette` and `fonts`, chosen from the presets in `theme-presets.js` (the "Design" entry in the CMS) |
+
+News bodies and home-page section text are edited with the CMS's rich text
+editor and stored as HTML. The pages never trust that HTML: `richHtml()` in
+`app.js` rebuilds it from an allowlist (paragraphs, line breaks, bold,
+italic, strikethrough, links, lists, h3/h4, block quotes, and the editor's
+text-align style), drops everything else, and runs links through `safeUrl()`.
+A body with no tags at all is treated as plain text, so older entries and
+hand-written JSON still work.
 
 Newest date sorts to the top of news and bulletins. Editing the JSON by hand
 and pushing works too — the CMS is a convenience, not a requirement.
