@@ -366,7 +366,7 @@
     }
 
     if ((layout === "photo-left" || layout === "photo-right") && img) {
-      var col = "<div>" + eyebrow + heading + (heading ? '<hr class="rule">' : "") + text + sectionButtons(s.buttons, false) + "</div>";
+      var col = "<div>" + heading + eyebrow + (heading ? '<hr class="rule">' : "") + text + sectionButtons(s.buttons, false) + "</div>";
       return (
         '<section class="section' + alt + '"><div class="wrap parish-intro custom">' +
         (layout === "photo-left" ? img + col : col + img) +
@@ -377,7 +377,7 @@
     // Text-only layout, also the fallback when a photo layout has no photo.
     return (
       '<section class="section' + alt + '"><div class="wrap custom-section center">' +
-      '<div class="section-head center">' + eyebrow + heading + (heading ? '<hr class="rule center">' : "") + "</div>" +
+      '<div class="section-head center">' + heading + eyebrow + (heading ? '<hr class="rule center">' : "") + "</div>" +
       text + sectionButtons(s.buttons, true) +
       "</div></section>"
     );

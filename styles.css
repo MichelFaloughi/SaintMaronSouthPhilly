@@ -147,6 +147,8 @@ h3 { font-size: 1.25rem; }
   pointer-events: none;
 }
 .hero .eyebrow { color: var(--gold-soft); }
+/* The small gold line sits under the page or section title. */
+h1 + .eyebrow, h2 + .eyebrow { margin: 0.6rem 0 0.4rem; }
 .hero h1 { color: var(--stone); }
 .hero .lede { color: #e6d3d6; }
 .hero-grid {
