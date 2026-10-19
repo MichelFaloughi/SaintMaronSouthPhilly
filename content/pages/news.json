@@ -1,7 +1,7 @@
 {
   "header": {
-    "eyebrow": "Happening at Saint Maron",
     "heading": "Parish News",
-    "lede": "<p>Announcements, feasts, and events from the life of our parish.</p><p>New items are posted by the parish office.</p><p><span data-color=\"red\" data-size=\"xlarge\">For more info, go to the bulletin page.</span></p>"
+    "eyebrow": "<p><span data-color=\"theme\" data-size=\"xlarge\">Happening at Saint Maron</span></p>",
+    "lede": "<p>Announcements, feasts, and events from the life of our parish.</p><p><span data-color=\"red\" data-size=\"xlarge\">For more info, go to the bulletin page.</span></p>"
   }
 }
