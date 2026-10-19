@@ -1,7 +1,7 @@
 {
   "header": {
-    "eyebrow": "We Would Love to Meet You",
     "heading": "Contact & Visit",
+    "eyebrow": "We Would Love to Meet You",
     "lede": "<p>Questions about the parish, sacraments, or joining our community? Reach out — the parish office is happy to help.</p>"
   },
   "office": {
@@ -15,7 +15,7 @@
   "clergy": {
     "heading": "Clergy",
     "pastor": "Father Andrawos Fadi El Tabchi",
-    "sacraments": "<p>For baptisms, weddings, confessions, anointing of the sick, or to arrange a home or hospital visit, please contact the parish office.</p>",
+    "sacraments": "<p style=\"text-align: justify;\">For baptisms, weddings, confessions, anointing of the sick, or to arrange a home or hospital visit, please contact the parish office.</p>",
     "newHere": "<p>Welcome! Introduce yourself after any Liturgy.</p>"
   },
   "finding": {
