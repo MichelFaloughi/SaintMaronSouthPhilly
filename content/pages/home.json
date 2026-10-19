@@ -1,7 +1,7 @@
 {
   "hero": {
-    "eyebrow": "Est. 1892 · Eparchy of Saint Maron of Brooklyn",
     "heading": "<p>Saint Maron Church<br>Maronite Catholic</p>",
+    "eyebrow": "Est. 1892 · Eparchy of Saint Maron of Brooklyn",
     "lede": "<p style=\"text-align: justify;\">One of the first Maronite parishes in North America, Saint Maron Church has faithfully served the faithful in South Philadelphia since 1892. For generations, our parish has been a home of prayer, worship, and communion, preserving and sharing the rich spiritual heritage of the Maronite Catholic Church.</p><p style=\"text-align: justify;\">On Saturday, December 2, 2017, we gave thanks to God as we celebrated the 125th anniversary of our parish. We remember with gratitude all those who, through their faith, sacrifice, and devotion, helped build the parish we cherish today.</p><p style=\"text-align: justify;\">Rooted in the faith of our fathers and strengthened by the grace of God, Saint Maron continues its mission of proclaiming the Gospel and celebrating the Sacred Mysteries. All are welcome at the Table of the Lord.</p>",
     "bulletinButton": "This Week's Bulletin",
     "visitButton": "Plan Your Visit"
@@ -25,8 +25,8 @@
     ]
   },
   "parish": {
-    "eyebrow": "",
     "heading": "Saint Jude Novena (October 20-28)",
+    "eyebrow": "",
     "photo": "/images/saint Jude 2026 - schedule - final parishioners_page-0001.jpg",
     "photoAlt": "",
     "caption": "",
@@ -36,35 +36,12 @@
   "sections": [
     {
       "layout": "photo-right",
-      "eyebrow": "",
       "heading": "Christmas 2026 Cash Raffle",
+      "eyebrow": "",
       "text": "<p>Your Chance to Win Cash, Our Chance to Grow!<br>Share the link with your friends and family to spread the Christmas cheer, support our Church, and give someone a chance to win CASH! <br>https://www.zeffy.com/en-US/ticketing/cash-raffle--2026<br>#ChristmasCashRaffle2026 #WinCash #EveryTicketCounts</p>",
       "image": "/images/CASH.png",
       "imageAlt": "2026 Christmas Cash Raffle Flyer",
       "buttons": []
-    },
-    {
-      "layout": "photo-left",
-      "eyebrow": "",
-      "heading": "Parish Website & Email Update",
-      "text": "<p>Parish Email &amp; Website Update</p><p>We are pleased to announce that our parish has officially migrated to the @saintmaronphilly.org email domain, and our new parish website is www.saintmaronphilly.org. </p><p>Going forward, all official parish communications will be sent from this domain, including emails from pator@saintmaronphilly.org, office@saintmaronphilly.org, SMOC@saintmaronphilly.org, ccd@saintmaronphilly.org, myo@saintmaronphilly.org, and mya@saintmaronphilly.org. </p><p>If you are not receiving parish emails, please check your spam or junk folder and mark our emails as “Safe” or “Trusted Sender” to ensure future messages reach your inbox. We encourage everyone to save our new website and email addresses in their contacts and stay connected with our parish through www.saintmaronphilly.org.</p>",
-      "image": "/images/Screenshot 2026-09-24 140751.png",
-      "imageAlt": "",
-      "buttons": []
-    },
-    {
-      "layout": "photo-right",
-      "eyebrow": "Support Saint Maron Church",
-      "heading": "Kitchen Upgrade",
-      "text": "<p>We Need Your Support<br>We invite you to be part of this important project. Every gift makes a difference, and together, our community can make this kitchen upgrade possible.</p><p>Whether you are able to make a small contribution or a larger gift, your generosity will be deeply appreciated. We also ask you to keep this project in your prayers and share this appeal with others who may wish to support our parish.</p><p>Thank you for standing with us and for helping us strengthen the place where fellowship, celebration, and service come together.</p>",
-      "image": "/images/Church Bulletin Poster.png",
-      "imageAlt": "Thank You for Your Support",
-      "buttons": [
-        {
-          "label": "Donate",
-          "url": "https://www.zeffy.com/en-US/donation-form/kitchen-upgrade-project"
-        }
-      ]
     }
   ],
   "callout": {
