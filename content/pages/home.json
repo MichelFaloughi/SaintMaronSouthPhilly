@@ -35,6 +35,15 @@
   },
   "sections": [
     {
+      "layout": "photo-left",
+      "heading": "<p>Annual Thanksgiving Food Drive</p>",
+      "eyebrow": "",
+      "text": "<p style=\"text-align: justify;\">Every year, we come together to support those in need and help make Thanksgiving a little brighter for individuals and families. We are proud to continue this tradition by providing Thanksgiving meals to those who may need a helping hand, extending our support beyond our immediate community.</p><p style=\"text-align: justify;\">We are excited to announce that <strong>our 2026 Thanksgiving Food Drive will run from October 25 through November 15, 2026!</strong></p><p style=\"text-align: justify;\">Your support, generosity, and kindness can make a meaningful difference in someone’s life this holiday season. Together, we can help ensure that more individuals and families have a warm meal and a reason to be thankful.</p><p style=\"text-align: justify;\">Let’s spread kindness, share blessings, and make this Thanksgiving special for everyone. Every contribution counts!</p><p style=\"text-align: justify;\"><strong>Thank you for supporting our mission and helping us make a difference, one meal at a time.</strong></p>",
+      "image": "/images/Food Drive (1).png",
+      "imageAlt": "",
+      "buttons": []
+    },
+    {
       "layout": "photo-right",
       "heading": "Christmas 2026 Cash Raffle",
       "eyebrow": "",
