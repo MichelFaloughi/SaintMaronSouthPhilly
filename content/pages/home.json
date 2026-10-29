@@ -25,12 +25,12 @@
     ]
   },
   "parish": {
-    "heading": "Saint Jude Novena (October 20-28)",
+    "heading": "",
     "eyebrow": "",
-    "photo": "/images/saint Jude 2026 - schedule - final parishioners_page-0001.jpg",
+    "photo": "",
     "photoAlt": "",
     "caption": "",
-    "story": "<p>This year, during our Saint Jude Novena, we will reflect on the seven virtues. These virtues are good habits that help us choose what is right, grow in holiness, and become more Christ-like in our daily lives. They shape the way we think, act, and respond to God and to one another. May this novena be a time of prayer, reflection, and spiritual growth for us all.</p>",
+    "story": "",
     "storyMore": ""
   },
   "sections": [
@@ -40,6 +40,15 @@
       "eyebrow": "",
       "text": "<p style=\"text-align: justify;\">Every year, we come together to support those in need and help make Thanksgiving a little brighter for individuals and families. We are proud to continue this tradition by providing Thanksgiving meals to those who may need a helping hand, extending our support beyond our immediate community.</p><p style=\"text-align: justify;\">We are excited to announce that <strong>our 2026 Thanksgiving Food Drive will run from October 25 through November 15, 2026!</strong></p><p style=\"text-align: justify;\">Your support, generosity, and kindness can make a meaningful difference in someone’s life this holiday season. Together, we can help ensure that more individuals and families have a warm meal and a reason to be thankful.</p><p style=\"text-align: justify;\">Let’s spread kindness, share blessings, and make this Thanksgiving special for everyone. Every contribution counts!</p><p style=\"text-align: justify;\"><strong>Thank you for supporting our mission and helping us make a difference, one meal at a time.</strong></p>",
       "image": "/images/Food Drive (1).png",
+      "imageAlt": "",
+      "buttons": []
+    },
+    {
+      "layout": "photo-right",
+      "heading": "<p><span data-color=\"theme\" data-size=\"xlarge\">National Vocation Awareness Week </span></p><p><span data-color=\"gold\" data-size=\"large\">November 1-7, 2026</span></p>",
+      "eyebrow": "",
+      "text": "<p>Let us continue to faithfully witness and cultivate vocations with joy to the holy priesthood, religious life, married life and the generous single life in our Eparchy. Thank you for your prayerful support and especially for those discerning their vocations.</p>",
+      "image": "/images/Vocations.png",
       "imageAlt": "",
       "buttons": []
     },
