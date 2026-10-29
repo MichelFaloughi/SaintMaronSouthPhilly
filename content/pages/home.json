@@ -24,15 +24,7 @@
       }
     ]
   },
-  "parish": {
-    "heading": "",
-    "eyebrow": "",
-    "photo": "",
-    "photoAlt": "",
-    "caption": "",
-    "story": "",
-    "storyMore": ""
-  },
+  "parish": null,
   "sections": [
     {
       "layout": "photo-left",
