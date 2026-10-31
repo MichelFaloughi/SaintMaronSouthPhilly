@@ -24,7 +24,15 @@
       }
     ]
   },
-  "parish": null,
+  "parish": {
+    "heading": "<p>Saint Maron maronite Catholic church</p>",
+    "eyebrow": "",
+    "photo": "/images/859218704_122126092413402037_4721160317370021178_n.jpg",
+    "photoAlt": "Original Church Building (1901-1968)",
+    "caption": "<p>Original Church Building (1901-1968)</p>",
+    "story": "<p style=\"text-align: justify;\">Founded by Lebanese immigrants at the close of the nineteenth century, Saint Maron has been a spiritual home for generations of families in South Philadelphia. We worship in the ancient Maronite tradition — one of the Eastern Catholic Churches in full communion with Rome — with a liturgy whose roots reach back to the earliest Christian communities of Antioch.</p><p style=\"text-align: justify;\">Whether your family has been here for a hundred years or you are stepping inside for the first time, you belong here.</p>",
+    "storyMore": ""
+  },
   "sections": [
     {
       "layout": "photo-right",
