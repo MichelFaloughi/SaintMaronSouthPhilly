@@ -11,15 +11,15 @@
     "subtitle": "And Holy Days of Obligation",
     "times": [
       {
-        "service": "Saturday",
+        "service": "Saturday (English)",
         "time": "4:00 PM"
       },
       {
-        "service": "Sunday",
+        "service": "Sunday (English - Arabic)",
         "time": "11:00 AM"
       },
       {
-        "service": "HDO",
+        "service": "HDO (English - Arabic)",
         "time": "6:00 PM"
       }
     ]
