@@ -36,10 +36,10 @@
   "sections": [
     {
       "layout": "photo-right",
-      "heading": "<p>Annual Thanksgiving Food Drive</p>",
-      "eyebrow": "",
-      "text": "<p style=\"text-align: justify;\">Every year, we come together to support those in need and help make Thanksgiving a little brighter for individuals and families. We are proud to continue this tradition by providing Thanksgiving meals to those who may need a helping hand, extending our support beyond our immediate community.</p><p style=\"text-align: justify;\">We are excited to announce that <strong>our 2026 Thanksgiving Food Drive will run from October 25 through November 15, 2026!</strong></p><p style=\"text-align: justify;\">Your support, generosity, and kindness can make a meaningful difference in someone’s life this holiday season. Together, we can help ensure that more individuals and families have a warm meal and a reason to be thankful.</p><p style=\"text-align: justify;\">Let’s spread kindness, share blessings, and make this Thanksgiving special for everyone. Every contribution counts!</p><p style=\"text-align: justify;\"><strong>Thank you for supporting our mission and helping us make a difference, one meal at a time.</strong></p>",
-      "image": "/images/Food Drive (1).png",
+      "heading": "<p>Christmas Giving Tree</p>",
+      "eyebrow": "<p><span data-color=\"theme\" data-size=\"large\">A Heartfelt Thank You</span></p>",
+      "text": "<p style=\"text-align: justify;\">“For I was hungry and you gave me food, I was thirsty and you gave me drink.” (Matthew 25:35)</p><p style=\"text-align: justify;\">&nbsp;Thank you to everyone who generously donated to our annual Thanksgiving Food Drive. Your kindness and generosity help us care for our brothers and sisters in need by giving them the opportunity to gather around the Thanksgiving table and share a meal filled with love, fellowship, and gratitude.</p><p style=\"text-align: justify;\">As our Thanksgiving Food Drive comes to an end, we joyfully continue another beautiful parish tradition: our Christmas Giving Tree!</p><p style=\"text-align: justify;\">What a beautiful opportunity to express our love for the Lord by remembering others, especially those who may be experiencing difficult times. Through the simple act of giving a gift, we share the joy, hope, and love of Christ with our brothers and sisters in need. We invite everyone to take part in this special tradition and help make Christmas brighter for those in our community.</p><p style=\"text-align: justify;\">May our generosity be a reflection of God's love, and may we remember that the greatest gift of Christmas is Jesus Himself.</p><p style=\"text-align: justify;\">May God bless you for your continued kindness and generosity!</p>",
+      "image": "/images/2026 christmas.png",
       "imageAlt": "",
       "buttons": []
     },
