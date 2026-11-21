@@ -51,6 +51,15 @@
       "image": "/images/CASH.png",
       "imageAlt": "2026 Christmas Cash Raffle Flyer",
       "buttons": []
+    },
+    {
+      "layout": "photo-left",
+      "heading": "<p>A Beautiful Block,</p><p>A Strong Community</p>",
+      "eyebrow": "<p style=\"text-align: left;\">Celebrating 3rd Place!</p>",
+      "text": "<p style=\"text-align: justify;\">We are proud to share that the 1100 block of South Alder Street, which is home to our church, has been awarded 3rd Place in the 2026 Philadelphia More Beautiful Committee’s Clean Block Contest! This recognition is a reflection of the hard work, dedication, and community spirit that make our block such a special place. A heartfelt thank you to all our neighbors, friends, and everyone who contributed their time and effort to keeping our block clean, beautiful, and welcoming. We are grateful to be part of such a wonderful community, and we look forward to continuing to make a difference together. Congratulations to everyone!</p>",
+      "image": "/images/PHILADELPHIA – On Friday, November 20, officials joined Sanitation Commissioner Crystal Jacobs Shipman and the Philadelphia More Beautiful Committee (PMBC) in announcing the top four winners of the annual Clean Bl.png",
+      "imageAlt": "Contest Results",
+      "buttons": []
     }
   ],
   "callout": {
